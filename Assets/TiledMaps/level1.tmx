@@ -6,7 +6,7 @@
  <tileset firstgid="17" name="images" tilewidth="0" tileheight="0" tilecount="0" columns="0"/>
  <layer name="Tile Layer 1" width="120" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt3DsOgCAQAFEa8Xv/84qFnYmF8snsFK8nGdgQCtaU0iSkrcjFIqRsXzT7stmXzb5s9mWzL5t92ezLZt9n84ve67NvDG/70L5sd9/W84gy/0bn+WWL0jfqvIjSNyr7stmXzb5s9mWzL5t92ezLZl+2r317vQtFfY9q3Vdjs28do8wX+7LZl82+bPZlsy+bfcfy973bvmz2ZbMvm33Z7Mt2tT1S/398VMdenNypkmc=
+   eJzt3EsKgDAMANFsVPzc/7zWhTtBxF87mQc5wdggXXSMiM5BzlSmD1H1YV8y+7LZl82+bPZlsy+bfdnsy2bfY8PJtMK+bTv7Du3Ltvf9eh9R9l/tPL9sWfpm3RdZ+mZlXzb7stmXzb5s9mWzL5t92ezLdrfvX/dCWe+jrvL8stn3HbXsF/uy2ZfNvmz2ZbMvm33r8vR/t33Z7MtmXzb7stmXbWu7xP/v+DjvzFxmBebsCIc=
   </data>
  </layer>
  <objectgroup name="walls">
