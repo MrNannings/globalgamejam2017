@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="120" height="40" tilewidth="32" tileheight="32" nextobjectid="276">
+ <tileset firstgid="1" name="tiles" tilewidth="32" tileheight="32" tilecount="16" columns="4">
+  <image source="tiles.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="images" tilewidth="0" tileheight="0" tilecount="0" columns="0"/>
+ <layer name="Tile Layer 1" width="120" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt3DsOgCAQAFEa8Xv/84qFnYmF8snsFK8nGdgQCtaU0iSkrcjFIqRsXzT7stmXzb5s9mWzL5t92ezLZt9n84ve67NvDG/70L5sd9/W84gy/0bn+WWL0jfqvIjSNyr7stmXzb5s9mWzL5t92ezLZl+2r317vQtFfY9q3Vdjs28do8wX+7LZl82+bPZlsy+bfcfy973bvmz2ZbMvm33Z7Mt2tT1S/398VMdenNypkmc=
+  </data>
+ </layer>
+ <objectgroup name="walls">
+  <object id="165" x="32" y="1248" width="3776" height="32"/>
+  <object id="168" x="0" y="32" width="32" height="1248"/>
+  <object id="169" x="3808" y="0" width="32" height="1280"/>
+  <object id="256" x="0" y="0" width="3776" height="32"/>
+  <object id="265" x="3552" y="352" width="256" height="32"/>
+  <object id="266" x="3168" y="1056" width="256" height="32"/>
+  <object id="267" x="2720" y="864" width="256" height="32"/>
+  <object id="268" x="2208" y="320" width="256" height="32"/>
+  <object id="269" x="1824" y="480" width="256" height="32"/>
+  <object id="270" x="1440" y="800" width="256" height="32"/>
+  <object id="271" x="928" y="416" width="256" height="32"/>
+  <object id="272" x="480" y="800" width="256" height="32"/>
+  <object id="273" x="32" y="416" width="256" height="32"/>
+ </objectgroup>
+ <objectgroup name="objects">
+  <object id="220" type="startposition" x="96" y="352" width="32" height="32">
+   <properties>
+    <property name="rotation" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="257" type="blaaa" x="32" y="608" width="3776" height="32"/>
+ </objectgroup>
+</map>
