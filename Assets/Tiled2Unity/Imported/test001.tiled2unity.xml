@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Tiled2Unity generated xml data-->
+<!--Do not modify by hand-->
+<!--Last exported: 20-1-2017 19:44:06-->
+<Tiled2Unity version="1.0.9.4">
+  <AssignMaterial mesh="mesh_tile_0001" material="rectangle_red" />
+  <Prefab name="test001" orientation="Orthogonal" staggerAxis="Y" staggerIndex="Odd" hexSideLength="0" numLayers="1" numTilesWide="100" numTilesHigh="100" tileWidth="32" tileHeight="32" exportScale="1" mapWidthInPixels="3200" mapHeightInPixels="3200">
+    <GameObject name="Tilelaag 1" x="0" y="0" z="0" />
+    <GameObject name="Objectlaag 1" x="0" y="0" z="0">
+      <GameObject name="TileObject" x="625" y="-224" rotation="0" layer="" scaleX="1" scaleY="1">
+        <TileObjectComponent width="352" height="88" />
+        <GameObject name="TileObject" x="176" y="44" scaleX="1" scaleY="1">
+          <GameObject name="tile_obj" copy="mesh_tile_0001" sortingLayerName="" sortingOrder="1" x="-176" y="44" />
+        </GameObject>
+      </GameObject>
+      <GameObject name="TileObject" x="63" y="-388" rotation="0" layer="" scaleX="1" scaleY="1">
+        <TileObjectComponent width="352" height="88" />
+        <GameObject name="TileObject" x="176" y="44" scaleX="1" scaleY="1">
+          <GameObject name="tile_obj" copy="mesh_tile_0001" sortingLayerName="" sortingOrder="1" x="-176" y="44" />
+        </GameObject>
+      </GameObject>
+    </GameObject>
+  </Prefab>
+  <ImportMesh filename="test001.obj">IyBXYXZlZnJvbnQgT0JKIGZpbGUgYXV0b21hdGljYWxseSBnZW5lcmF0ZWQgYnkgVGlsZWQyVW5pdHkNCg0KIyBWZXJ0aWNlcyAoQ291bnQgPSA0KQ0KdiAwIC04OCAwDQp2IC0zNTIgLTg4IDANCnYgLTM1MiAwIDANCnYgMCAwIDANCg0KIyBUZXh0dXJlIGNvb3JpZGluYXRlcyAoQ291bnQgPSA0KQ0KdnQgMC4wMDAxMjIwNzAzIDAuMDAwMTIyMDcwMw0KdnQgMC45OTk4Nzc5IDAuMDAwMTIyMDcwMw0KdnQgMC45OTk4Nzc5IDAuOTk5ODc3OQ0KdnQgMC4wMDAxMjIwNzAzIDAuOTk5ODc3OQ0KDQojIE5vcm1hbA0Kdm4gMCAwIC0xDQoNCiMgR3JvdXBzIChDb3VudCA9IDIpDQoKZyBtZXNoX3RpbGVfMDAwMQpmIDEvMS8xIDIvMi8xIDMvMy8xIDQvNC8xCg0K</ImportMesh>
+  <InternalTexture assetPath="Assets/Graphics/simpel/rectangle_red.png" />
+</Tiled2Unity>
