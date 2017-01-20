@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--Tiled2Unity generated xml data-->
+<!--Do not modify by hand-->
+<!--Last exported: 20-1-2017 19:51:11-->
+<Tiled2Unity version="1.0.9.4">
+  <Prefab name="naamloos" orientation="Orthogonal" staggerAxis="Y" staggerIndex="Odd" hexSideLength="0" numLayers="1" numTilesWide="100" numTilesHigh="100" tileWidth="32" tileHeight="32" exportScale="1" mapWidthInPixels="3200" mapHeightInPixels="3200">
+    <GameObject name="Tilelaag 1" x="0" y="0" z="0" />
+    <GameObject name="Objectlaag 1" x="19" y="-14" z="0">
+      <GameObject name="RectangleObject" x="532" y="-273" rotation="0" layer="">
+        <BoxCollider2D width="435" height="177" />
+      </GameObject>
+    </GameObject>
+  </Prefab>
+  <ImportMesh filename="naamloos.obj">IyBXYXZlZnJvbnQgT0JKIGZpbGUgYXV0b21hdGljYWxseSBnZW5lcmF0ZWQgYnkgVGlsZWQyVW5pdHkNCg0KIyBWZXJ0aWNlcyAoQ291bnQgPSAwKQ0KDQojIFRleHR1cmUgY29vcmlkaW5hdGVzIChDb3VudCA9IDApDQoNCiMgTm9ybWFsDQp2biAwIDAgLTENCg0KIyBHcm91cHMgKENvdW50ID0gMSkNCg0K</ImportMesh>
+</Tiled2Unity>
