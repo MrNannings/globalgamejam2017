@@ -162,6 +162,6 @@ MonoBehaviour:
   NumTilesHigh: 100
   TileWidth: 32
   TileHeight: 32
-  ExportScale: 0.1
+  ExportScale: 1
   MapWidthInPixels: 3200
   MapHeightInPixels: 3200
