@@ -143,15 +143,6 @@ namespace GlobalGameJam2017 {
 			return onTop;
 		}
 
-		void OnDrawGizmos () {
-			var gravity = GravityLine.Instance.GetValue(transform.position);
-			var xOffset = raycastTarget.x;
-			var yOffset = raycastTarget.y;
-
-			Gizmos.DrawLine(transform.position + new Vector3(xOffset, 0), transform.position + new Vector3(xOffset, 0) + Vector3.down * gravity * yOffset);
-			Gizmos.DrawLine(transform.position + new Vector3(-xOffset, 0), transform.position + new Vector3(-xOffset, 0) + Vector3.down * gravity * yOffset);
-		}
-
 		private void OnCollisionEnter2D (Collision2D collision) {
 			if (CheckHittingPlatform(-1) || !grounded && !collision.gameObject.CompareTag("Platform")) {
                 soundsController.PlaySound(14);
