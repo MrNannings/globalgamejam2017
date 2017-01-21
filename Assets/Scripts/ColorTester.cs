@@ -143,15 +143,27 @@ namespace GlobalGameJam2017 {
 			return onTop;
 		}
 
+        private void GettingHit()
+        {
+            soundsController.PlaySound(14);
+            transform.position = lastGroundedPosition;
+            rigidbody.velocity = Vector2.zero;
+        }
+
 		private void OnCollisionEnter2D (Collision2D collision) {
 			if (CheckHittingPlatform(-1) || !grounded && !collision.gameObject.CompareTag("Platform")) {
-                soundsController.PlaySound(14);
-                transform.position = lastGroundedPosition;
-				rigidbody.velocity = Vector2.zero;
-			}
+                GettingHit();
+            }
 		}
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Enemy"))
+            {
+                GettingHit();
+            }
+        }
 
-		private void KickAnimation () {
+        private void KickAnimation () {
 			if (kickAnimationTime >= 0) {
 				child.localScale = originalScale + Vector3.one * curve.Evaluate(kickAnimationTime) * 0.2f;
 
