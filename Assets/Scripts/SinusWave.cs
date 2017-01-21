@@ -25,8 +25,7 @@ public class SinusWave : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+    }
 
 	private void OnDrawGizmos () {
 		for (float i = -100; i < 100; i += 0.1f) {
@@ -39,7 +38,7 @@ public class SinusWave : MonoBehaviour {
 			Gizmos.color = Color.yellow;
 			Gizmos.DrawCube(positionOnSinus, Vector3.one * 0.2f);
 			Gizmos.color = Color.white;
-		}
+        }
 
 		Gizmos.DrawCube(positionOnSinus, Vector3.one * 0.1f);
 	}

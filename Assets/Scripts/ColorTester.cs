@@ -10,7 +10,9 @@ namespace GlobalGameJam2017 {
 		public AnimationCurve curve;
 		public Transform child;
 
-		private bool grounded;
+        public GameObject touchParticle;
+
+        private bool grounded;
 		private Vector2 lastGroundedPosition;
 		private Vector3 originalScale;
 		private float kickAnimationTime = -1;
@@ -18,7 +20,7 @@ namespace GlobalGameJam2017 {
 		private new Rigidbody2D rigidbody;
 		private SpriteRenderer spriteRenderer;
 
-		private void Awake () {
+        private void Awake () {
 			rigidbody = GetComponent<Rigidbody2D>();
 			spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -52,7 +54,10 @@ namespace GlobalGameJam2017 {
 			rigidbody.AddForce(force);
 
 			KickAnimation();
-		}
+
+            CheckTouchWave();
+
+        }
 
 		private void OnCollisionEnter2D (Collision2D collision) {
 			var gravity = GravityLine.Instance.GetValue(transform.position);
@@ -98,6 +103,28 @@ namespace GlobalGameJam2017 {
 			}
 		}
 
-	}
+
+        void CheckTouchWave()
+        {
+            var positionOnSinus = new Vector3(transform.position.x, SinusWave.Instance.GetValue(transform.position));
+
+            if (Vector3.Distance(transform.position, positionOnSinus) < 0.5f)
+            {
+                ShowTouchParticle(positionOnSinus);
+            }
+        }
+
+        public void ShowTouchParticle(Vector3 position)
+        {
+            if(!touchParticle.GetComponent<ParticleSystem>().isPlaying)
+            {
+                touchParticle.GetComponent<ParticleSystem>().Clear();
+                touchParticle.transform.position = position;
+                touchParticle.GetComponent<ParticleSystem>().Play();
+            }
+
+        }
+
+    }
 
 }
