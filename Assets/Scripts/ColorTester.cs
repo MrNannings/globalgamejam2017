@@ -17,6 +17,7 @@ namespace GlobalGameJam2017 {
         public float updateInterval = 0.5F; //time between nodes
         private double lastInterval;
         public Animator playerAnimator;
+        public Animator shadowAnimator;
 
         public GameObject touchParticle;
 
@@ -69,19 +70,22 @@ namespace GlobalGameJam2017 {
 				jumped = false;
 				timeSinceGrounded = 0;
 			}
+			else if (Input.GetAxis("Horizontal") == 0) {
+				force.x = -rigidbody.velocity.x * 1 * Time.deltaTime;
+			}
 			else {
-				force += new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * 60 * speed, 0);
+				force += new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * 40 * speed, 0);
 
 				timeSinceGrounded += Time.deltaTime;
 			}
 
 			if (timeSinceGrounded < 0.18f) {
 				if (Input.GetButtonDown("Jump") && timeSinceGrounded == 0) {
-					force += new Vector2(0, 50 * jumpStrength * GravityLine.Instance.GetValue(transform.position));
+					force += new Vector2(0, 30 * jumpStrength * GravityLine.Instance.GetValue(transform.position));
 					jumped = true;
 				}
 				else if (Input.GetButton("Jump") && jumped) {
-					force += new Vector2(0, 100 * jumpStrength * GravityLine.Instance.GetValue(transform.position) * Time.deltaTime);
+					force += new Vector2(0, 200 * jumpStrength * GravityLine.Instance.GetValue(transform.position) * Time.deltaTime);
 				}
 			}
 
@@ -107,6 +111,9 @@ namespace GlobalGameJam2017 {
             playerAnimator.SetFloat("velocityY", rigidbody.velocity.y * gravity);
             //Debug.Log(rigidbody.velocity.y * gravity);
 
+			shadowAnimator.SetBool("grounded", grounded);
+            shadowAnimator.SetFloat("velocityX", Mathf.Abs(rigidbody.velocity.x));
+            shadowAnimator.SetFloat("velocityY", rigidbody.velocity.y * gravity);
         }
 
 		private bool CheckHittingPlatform (float direction = 1) {
