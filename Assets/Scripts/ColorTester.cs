@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace GlobalGameJam2017 {
 
@@ -9,6 +10,9 @@ namespace GlobalGameJam2017 {
 		public float speed;
 		public AnimationCurve curve;
 		public Transform child;
+        public List<SinusWaveNode> sinusWaveNodesList;
+        public float updateInterval = 0.5F; //time between nodes
+        private double lastInterval;
 
         public GameObject touchParticle;
 
@@ -18,7 +22,7 @@ namespace GlobalGameJam2017 {
 		private float kickAnimationTime = -1;
 
 		private new Rigidbody2D rigidbody;
-		private SpriteRenderer spriteRenderer;
+		private SpriteRenderer spriteRenderer;   
 
         private void Awake () {
 			rigidbody = GetComponent<Rigidbody2D>();
@@ -27,7 +31,9 @@ namespace GlobalGameJam2017 {
 			originalScale = child.localScale;
 		}
 
-		private void Start () {}
+		private void Start () {
+            sinusWaveNodesList = new List<SinusWaveNode>();
+        }
 
 		private void Update () {
 			var force = Vector2.zero;
@@ -108,13 +114,32 @@ namespace GlobalGameJam2017 {
 		}
 
 
-        void CheckTouchWave()
+        public void CheckTouchWave()
         {
             var positionOnSinus = new Vector3(transform.position.x, SinusWave.Instance.GetValue(transform.position));
 
             if (Vector3.Distance(transform.position, positionOnSinus) < 0.5f)
             {
-                ShowTouchParticle(positionOnSinus);
+                float timeNow = Time.realtimeSinceStartup;
+                if (timeNow > lastInterval + updateInterval)
+                {
+                    lastInterval = timeNow;
+                    //ShowTouchParticle(positionOnSinus);
+                    //Debug.Log(sinusWaveNodesList);
+                    sinusWaveNodesList.Add(new SinusWaveNode(sinusWaveNodesList.Count, 10, positionOnSinus));
+                    if (sinusWaveNodesList.Count > 1)
+                    {
+                        //Debug.Log(sinusWaveNodesList[sinusWaveNodesList.Count]);
+                        ScoreManager.Instance.IncreaseScore(
+                            ScoreManager.Instance.CalculateScoreBetweenNode(
+                                sinusWaveNodesList[sinusWaveNodesList.Count - 1], sinusWaveNodesList[sinusWaveNodesList.Count - 2]
+                            )
+                        );
+                    }
+
+                    //ScoreManager.Instance.IncreaseScore(10);
+                }
+
             }
         }
 
