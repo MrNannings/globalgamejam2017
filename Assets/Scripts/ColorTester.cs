@@ -89,12 +89,13 @@ namespace GlobalGameJam2017 {
 
             CheckTouchWave();
 
-
+            //vertical flip
             if (gravity != 0)
             {
-
-                    transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs( transform.localScale.y) * gravity, transform.localScale.z);           
+                transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs( transform.localScale.y) * gravity, transform.localScale.z);           
             }
+            //horizontal flip
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(rigidbody.velocity.x), transform.localScale.y, transform.localScale.z);
 
             playerAnimator.SetBool("grounded", grounded);
             playerAnimator.SetFloat("velocityX", Mathf.Abs(rigidbody.velocity.x));
