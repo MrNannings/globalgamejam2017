@@ -4783,7 +4783,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1710067679
+  randomSeed: -80100467
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7428,11 +7428,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesPerUnit: 40
   speed: 3
+  avoidanceStrength: 1
   levelStart: {fileID: 172303840}
   levelEnd: {fileID: 1445035450}
   scoreParticleSystem: {fileID: 1833065290}
   obstacles:
   - {fileID: 1386419832}
+  avoidanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.8586582
+      value: 0.30861235
+      inSlope: 1.193881
+      outSlope: 1.193881
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 12.710133
+      outSlope: 12.710133
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!4 &1609178307
 Transform:
   m_ObjectHideFlags: 0

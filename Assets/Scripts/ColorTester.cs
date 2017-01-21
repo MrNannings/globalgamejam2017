@@ -76,13 +76,13 @@ namespace GlobalGameJam2017 {
 				jumped = false;
 				timeSinceGrounded = 0;
 			}
-			else if (Input.GetAxis("Horizontal") == 0) {
-				if (Mathf.Abs(rigidbody.velocity.x) > 0.01f) {
+			else {
+				if (Input.GetAxis("Horizontal") == 0 && Mathf.Abs(rigidbody.velocity.x) > 0.01f) {
 					force.x = -rigidbody.velocity.x * 1 * Time.deltaTime;
 				}
-			}
-			else {
-				force += new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * 40 * speed, 0);
+				else {
+					force += new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * 40 * speed, 0);
+				}
 
 				timeSinceGrounded += Time.deltaTime;
 			}
@@ -113,9 +113,11 @@ namespace GlobalGameJam2017 {
                 transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs( transform.localScale.y) * gravity, transform.localScale.z);           
             }
             //horizontal flip
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(rigidbody.velocity.x), transform.localScale.y, transform.localScale.z);
+			if (Mathf.Abs(rigidbody.velocity.x) > 0.002f) {
+				transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(rigidbody.velocity.x), transform.localScale.y, transform.localScale.z);
+			}
 
-            playerAnimator.SetBool("grounded", grounded);
+			playerAnimator.SetBool("grounded", grounded);
             playerAnimator.SetFloat("velocityX", Mathf.Abs(rigidbody.velocity.x));
             playerAnimator.SetFloat("velocityY", rigidbody.velocity.y * gravity);
             //Debug.Log(rigidbody.velocity.y * gravity);

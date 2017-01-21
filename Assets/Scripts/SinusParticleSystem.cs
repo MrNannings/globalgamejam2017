@@ -11,6 +11,7 @@ public class SinusParticleSystem : MonoBehaviour {
 	public Transform levelEnd;
 	public ParticleSystem scoreParticleSystem;
 	public Transform[] obstacles;
+	public AnimationCurve avoidanceCurve;
 
 	private int particleCount;
 	private float[] particleRandom;
@@ -87,8 +88,10 @@ public class SinusParticleSystem : MonoBehaviour {
 			        distance = 0;
 		        }
 
-		        particles[i].position += AvoidVector(obstacle.position, particles[i].position) * distance * avoidanceStrength;
-		        scoreParticles[i].position += AvoidVector(obstacle.position, scoreParticles[i].position) * distance * avoidanceStrength;
+		        var avoidance = avoidanceCurve.Evaluate(distance / 3);
+
+		        particles[i].position += AvoidVector(obstacle.position, particles[i].position) * avoidance * avoidanceStrength;
+		        scoreParticles[i].position += AvoidVector(obstacle.position, scoreParticles[i].position) * avoidance * avoidanceStrength;
 	        }
         }
 
