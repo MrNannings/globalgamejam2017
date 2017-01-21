@@ -27,10 +27,10 @@ public class SoundsController : MonoBehaviour {
 
     public void PlaySound(int soundsNumber)
     {
-        if (!audioSource.isPlaying)
         {
-            if(lastPlayedNumber != 3) audioSource.PlayOneShot(soundClips[soundsNumber]);
-            lastPlayedNumber = soundsNumber;
+            audioSource.PlayOneShot(soundClips[soundsNumber]);
+
+			lastPlayedNumber = soundsNumber;
         }
         
     }

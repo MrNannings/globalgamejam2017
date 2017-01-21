@@ -52,6 +52,10 @@ namespace GlobalGameJam2017 {
 
 		private void Update () {
 			if (CheckHittingPlatform()) {
+				if (!grounded) {
+					soundsController.PlaySound(3);
+				}
+
 				lastGroundedPosition = transform.position;
 				grounded = true;
 			}
@@ -73,7 +77,9 @@ namespace GlobalGameJam2017 {
 				timeSinceGrounded = 0;
 			}
 			else if (Input.GetAxis("Horizontal") == 0) {
-				force.x = -rigidbody.velocity.x * 1 * Time.deltaTime;
+				if (Mathf.Abs(rigidbody.velocity.x) > 0.01f) {
+					force.x = -rigidbody.velocity.x * 1 * Time.deltaTime;
+				}
 			}
 			else {
 				force += new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * 40 * speed, 0);
@@ -131,13 +137,11 @@ namespace GlobalGameJam2017 {
 			var hit = Physics2D.Raycast(transform.position + new Vector3(raycastTarget.x, 0), Vector2.down * gravity * direction, rayY, LayerMask.GetMask("Platforms"));
 			if (hit.collider != null) {
 				onTop = true;
-                soundsController.PlaySound(3);
             }
 
 			hit = Physics2D.Raycast(transform.position + new Vector3(-raycastTarget.x, 0), Vector2.down * gravity * direction, rayY, LayerMask.GetMask("Platforms"));
 			if (hit.collider != null) {
 				onTop = true;
-                soundsController.PlaySound(3);
             }
 
 			return onTop;

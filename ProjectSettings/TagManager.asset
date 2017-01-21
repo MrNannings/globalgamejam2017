@@ -9,6 +9,7 @@ TagManager:
   - endposition
   - middleline
   - Enemy
+  - Wall
   layers:
   - Default
   - TransparentFX

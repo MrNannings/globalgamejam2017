@@ -6,9 +6,11 @@ public class SinusParticleSystem : MonoBehaviour {
 
 	public int particlesPerUnit;
 	public float speed;
+	public float avoidanceStrength = 1;
 	public Transform levelStart;
 	public Transform levelEnd;
 	public ParticleSystem scoreParticleSystem;
+	public Transform[] obstacles;
 
 	private int particleCount;
 	private float[] particleRandom;
@@ -56,15 +58,8 @@ public class SinusParticleSystem : MonoBehaviour {
 		scoreParticleSystem.SetParticles(scoreParticles, particleCount);
 	}
 
-	private bool once = false;
-	
 	// Update is called once per frame
 	void Update () {
-//		if (once)
-//			return;
-//
-//		once = true;
-
         for(int i = 0; i < particleCount; i++) {
 			particleXPositions[i] += speed * Time.deltaTime;
 	        if (particleXPositions[i] > levelEnd.position.x) {
@@ -84,9 +79,36 @@ public class SinusParticleSystem : MonoBehaviour {
 
 	        particles[i].position += new Vector3(0, Mathf.Sin(Time.time * particleRandom[i] * 15f) * 0.2f);
 	        scoreParticles[i].position += new Vector3(0, Mathf.Sin(Time.time * particleRandom[i] * 15f) * 0.2f);
+
+	        foreach (var obstacle in obstacles) {
+		        var distance = 3 - Vector3.Distance(obstacle.position, particles[i].position);
+
+		        if (distance < 0) {
+			        distance = 0;
+		        }
+
+		        particles[i].position += AvoidVector(obstacle.position, particles[i].position) * distance * avoidanceStrength;
+		        scoreParticles[i].position += AvoidVector(obstacle.position, scoreParticles[i].position) * distance * avoidanceStrength;
+	        }
         }
 
         particleSystem.SetParticles(particles, particleCount);
 		scoreParticleSystem.SetParticles(scoreParticles, particleCount);
+	}
+
+	private Vector3 AvoidVector (Vector3 position, Vector3 particle) {
+		var normal = (particle - position).normalized;
+		var perpendicular = new Vector2(normal.y, -normal.x);
+
+		if (Vector2.Dot(perpendicular, Vector2.up) < 0) {
+			perpendicular = -perpendicular;
+		}
+
+		var goUp = Vector3.Dot(normal, Vector3.up) > 0;
+		if (goUp) {
+			return perpendicular;
+		}
+
+		return -perpendicular;
 	}
 }
