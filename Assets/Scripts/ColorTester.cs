@@ -13,6 +13,7 @@ namespace GlobalGameJam2017 {
         public List<SinusWaveNode> sinusWaveNodesList;
         public float updateInterval = 0.5F; //time between nodes
         private double lastInterval;
+        public Animator playerAnimator;
 
         public GameObject touchParticle;
 
@@ -41,7 +42,12 @@ namespace GlobalGameJam2017 {
 
 			var gravity = GravityLine.Instance.GetValue(transform.position);
 
-			if (grounded) {
+            Vector3 theScale = child.transform.localScale;
+            theScale.y = originalScale.y * 1;
+            child.transform.localScale = theScale;
+
+
+            if (grounded) {
 				//				rigidbody.position += new Vector2(Input.GetAxis("Horizontal"), 0) * Time.deltaTime;
 
 				force += new Vector2(Input.GetAxis("Horizontal"), 0) * Time.deltaTime * speed;
@@ -78,7 +84,7 @@ namespace GlobalGameJam2017 {
 
 			var onTop = Vector2.Dot(direction, otherDirection) > 0;
 
-			Debug.Log(onTop ? "top" : "bottom");
+			//Debug.Log(onTop ? "top" : "bottom");
 
 			if (onTop) {
 				lastGroundedPosition = transform.position;
