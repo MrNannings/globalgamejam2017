@@ -31,7 +31,8 @@ namespace GlobalGameJam2017 {
 		private new Rigidbody2D rigidbody;
 		private SpriteRenderer spriteRenderer; 
         
-        private AnalyzeSound AnalyzeSoundKick;  
+        private AnalyzeSound AnalyzeSoundKick;
+        private SoundsController soundsController;  
 
         private void Awake () {
 			rigidbody = GetComponent<Rigidbody2D>();
@@ -40,6 +41,7 @@ namespace GlobalGameJam2017 {
 			originalScale = child.localScale;
 
             AnalyzeSoundKick = GameObject.Find("MusicOut Kick").GetComponent<AnalyzeSound>();
+            soundsController = GameObject.Find("Sounds Controller").GetComponent<SoundsController>();
 
         }
 
@@ -83,6 +85,7 @@ namespace GlobalGameJam2017 {
 				if (Input.GetButtonDown("Jump") && timeSinceGrounded == 0) {
 					force += new Vector2(0, 30 * jumpStrength * GravityLine.Instance.GetValue(transform.position));
 					jumped = true;
+                    soundsController.PlaySound(8);
 				}
 				else if (Input.GetButton("Jump") && jumped) {
 					force += new Vector2(0, 200 * jumpStrength * GravityLine.Instance.GetValue(transform.position) * Time.deltaTime);
@@ -149,7 +152,8 @@ namespace GlobalGameJam2017 {
 
 		private void OnCollisionEnter2D (Collision2D collision) {
 			if (CheckHittingPlatform(-1) || !grounded && !collision.gameObject.CompareTag("Platform")) {
-				transform.position = lastGroundedPosition;
+                soundsController.PlaySound(14);
+                transform.position = lastGroundedPosition;
 				rigidbody.velocity = Vector2.zero;
 			}
 		}
@@ -180,6 +184,7 @@ namespace GlobalGameJam2017 {
             if (Vector3.Distance(transform.position, positionOnSinus) < 0.5f)
             {
                 ShowTouchParticle(positionOnSinus);
+                soundsController.PlaySound(2);
 
                 float timeNow = Time.realtimeSinceStartup;
                 if (timeNow > lastInterval + updateInterval)

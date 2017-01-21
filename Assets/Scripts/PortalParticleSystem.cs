@@ -18,6 +18,6 @@ public class PortalParticleSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		var particles = particleSystem.GetParticles();
+		//var particles = particleSystem.GetParticles();
 	}
 }
