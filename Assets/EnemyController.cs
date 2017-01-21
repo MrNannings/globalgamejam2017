@@ -1,15 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EnemyController : MonoBehaviour {
 
     public BoxCollider2D boxColliderPath;
+    public AnimationCurve curve;
+
     private string direction = "up";
     private Vector3 orginalsize;
+    private AnalyzeSound AnalyzeSoundKick;
+    private float kickAnimationTime = -1;
+    private float timeSinceGrounded = 0;
+    
+    private void Awake()
+    {
+        AnalyzeSoundKick = GameObject.Find("MusicOut Kick").GetComponent<AnalyzeSound>();
+    }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         orginalsize = transform.localScale;
 
     }
@@ -42,5 +53,27 @@ public class EnemyController : MonoBehaviour {
             }
         }
 
+    }
+
+    private void KickAnimation()
+    {
+        if (kickAnimationTime >= 0)
+        {
+            transform.localScale = orginalsize + Vector3.one * curve.Evaluate(kickAnimationTime) * 0.2f;
+
+            kickAnimationTime += Time.deltaTime;
+
+            if (kickAnimationTime > curve.keys.Last().time)
+            {
+                kickAnimationTime = -1;
+            }
+            return;
+        }
+
+        if (AnalyzeSoundKick != null && AnalyzeSoundKick.PitchValue > 50)
+        {
+            kickAnimationTime = 0;
+            transform.localScale = orginalsize;
+        }
     }
 }
