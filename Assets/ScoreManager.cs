@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class ScoreManager : MonoBehaviour
 
     public int currentScore;
     public int highScore;
+    public float timerLevel;
 
     public Text scoreText;
+    public Text timerText;
 
     void Awake()
     {
@@ -20,6 +23,7 @@ public class ScoreManager : MonoBehaviour
         }
 
         scoreText = GameObject.Find("Score Text").GetComponent<Text>();
+        timerText = GameObject.Find("Timer Text").GetComponent<Text>();
     }
 
 	// Use this for initialization
@@ -31,25 +35,31 @@ public class ScoreManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        timerLevel -= Time.deltaTime;
+        if (timerLevel <= 0)
+        {
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
+        }
+
+        UpdateUI();
+    }
 
     public void IncreaseScore(int score)
     {
         currentScore += score;
-        UpdateUI();
         Debug.Log(score);
     }
 
     public void UpdateUI()
     {
         scoreText.text = "Score: " + currentScore;
+        timerText.text = "" + Mathf.Round(timerLevel);
     }
 
     public int CalculateScoreBetweenNode(SinusWaveNode node1, SinusWaveNode node2)
     {
-        //return 1;
-        //Debug.Log(Vector3.Distance(node1.position, node2.position));
         return Mathf.RoundToInt(Vector3.Distance(node1.position, node2.position) * 20);
     }
 

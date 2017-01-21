@@ -33,6 +33,8 @@ namespace GlobalGameJam2017 {
 
 		private void Start () {
             sinusWaveNodesList = new List<SinusWaveNode>();
+            ScoreManager.Instance.currentScore = 0;
+            ScoreManager.Instance.timerLevel = 20;
         }
 
 		private void Update () {
@@ -124,20 +126,15 @@ namespace GlobalGameJam2017 {
                 if (timeNow > lastInterval + updateInterval)
                 {
                     lastInterval = timeNow;
-                    //ShowTouchParticle(positionOnSinus);
-                    //Debug.Log(sinusWaveNodesList);
                     sinusWaveNodesList.Add(new SinusWaveNode(sinusWaveNodesList.Count, 10, positionOnSinus));
                     if (sinusWaveNodesList.Count > 1)
                     {
-                        //Debug.Log(sinusWaveNodesList[sinusWaveNodesList.Count]);
                         ScoreManager.Instance.IncreaseScore(
                             ScoreManager.Instance.CalculateScoreBetweenNode(
                                 sinusWaveNodesList[sinusWaveNodesList.Count - 1], sinusWaveNodesList[sinusWaveNodesList.Count - 2]
                             )
                         );
                     }
-
-                    //ScoreManager.Instance.IncreaseScore(10);
                 }
 
             }
