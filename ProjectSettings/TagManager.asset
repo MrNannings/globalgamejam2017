@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - startposition
+  - endposition
+  - middleline
   layers:
   - Default
   - TransparentFX

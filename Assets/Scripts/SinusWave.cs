@@ -9,6 +9,7 @@ public class SinusWave : MonoBehaviour {
 	public float amplitude;
 	public float frequency;
 	public Vector2 offset;
+	public AnimationCurve curve;
 
 	void Awake () {
 		if (Instance != null) {
