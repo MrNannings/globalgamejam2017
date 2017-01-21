@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance;
 
+	public bool debug = true;
     public int currentScore;
     public int highScore;
     public float timePerUnit = 5;
@@ -54,7 +55,9 @@ public class ScoreManager : MonoBehaviour
                 highScore = currentScore;
                 highScoreText.text = "Score: " + highScore;
             }
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+			if (!debug) 
+				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
 		if (Input.GetButton("Reset")) {

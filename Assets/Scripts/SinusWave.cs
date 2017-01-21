@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
 public class SinusWave : MonoBehaviour {
 
 	public static SinusWave Instance;
@@ -11,11 +10,7 @@ public class SinusWave : MonoBehaviour {
 	public float frequency;
 	public Vector2 offset;
 
-	private LineRenderer lineRenderer;
-
 	void Awake () {
-		lineRenderer = GetComponent<LineRenderer>();
-
 		if (Instance != null) {
 			Debug.LogError("SinusWave instance already exists");
 		}
@@ -24,16 +19,7 @@ public class SinusWave : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
-		List<Vector3> positions = new List<Vector3>();
-
-		for (float i = -100; i < 100; i += 0.1f) {
-			positions.Add(new Vector3(i, GetValue(new Vector2(i, 0))));
-		}
-
-		lineRenderer.numPositions = positions.Count;
-		lineRenderer.SetPositions(positions.ToArray());
-	}
+	void Start () {}
 	
 	// Update is called once per frame
 	void Update () {
@@ -54,6 +40,9 @@ public class SinusWave : MonoBehaviour {
 	}
 
 	public float GetValue (float x) {
+		var volume = AnalyzeSound.Instance.DbValue;
+		var rms = AnalyzeSound.Instance.RmsValue;
+
 		return Mathf.Sin(x * frequency) * amplitude;
 	}
 

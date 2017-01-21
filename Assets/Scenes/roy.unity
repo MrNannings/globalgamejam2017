@@ -6709,7 +6709,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -650509611
+  randomSeed: -1818575293
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9501,7 +9501,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
