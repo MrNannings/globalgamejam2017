@@ -304,6 +304,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4315129538272976, guid: a4aa4464abbda224e8fb1eff81605600, type: 2}
       propertyPath: m_LocalPosition.x
       value: 11.33
@@ -344,6 +349,51 @@ Prefab:
     - target: {fileID: 1999497989865958, guid: a4aa4464abbda224e8fb1eff81605600, type: 2}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_RotationOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4aa4464abbda224e8fb1eff81605600, type: 2}
@@ -12616,6 +12666,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4315129538272976, guid: a4aa4464abbda224e8fb1eff81605600, type: 2}
       propertyPath: m_LocalPosition.x
       value: -2.77
@@ -12653,6 +12708,51 @@ Prefab:
       propertyPath: boxColliderPath
       value: 
       objectReference: {fileID: 52227120}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114126640942104608, guid: a4aa4464abbda224e8fb1eff81605600,
+        type: 2}
+      propertyPath: curve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4aa4464abbda224e8fb1eff81605600, type: 2}
   m_IsPrefabParent: 0
