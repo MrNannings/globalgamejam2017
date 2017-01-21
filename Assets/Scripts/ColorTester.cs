@@ -7,7 +7,10 @@ namespace GlobalGameJam2017 {
 	[RequireComponent (typeof(SpriteRenderer), typeof(Rigidbody2D))]
 	public class ColorTester : MonoBehaviour {
 
+		public bool debug = true;
+		public float jumpStrength = 3;
 		public float speed;
+		public Vector2 raycastTarget = new Vector2(0.2f, 0.3f);
 		public AnimationCurve curve;
 		public Transform child;
         public List<SinusWaveNode> sinusWaveNodesList;
@@ -17,9 +20,11 @@ namespace GlobalGameJam2017 {
         public GameObject touchParticle;
 
         private bool grounded;
+		private bool jumped;
 		private Vector2 lastGroundedPosition;
 		private Vector3 originalScale;
 		private float kickAnimationTime = -1;
+		private float timeSinceGrounded = 0;
 
 		private new Rigidbody2D rigidbody;
 		private SpriteRenderer spriteRenderer;   
@@ -37,29 +42,44 @@ namespace GlobalGameJam2017 {
         }
 
 		private void Update () {
+			if (CheckHittingPlatform()) {
+				lastGroundedPosition = transform.position;
+				grounded = true;
+			}
+			else {
+				grounded = false;
+			}
+
 			var force = Vector2.zero;
 
 			var gravity = GravityLine.Instance.GetValue(transform.position);
 
 			if (grounded) {
-				//				rigidbody.position += new Vector2(Input.GetAxis("Horizontal"), 0) * Time.deltaTime;
+				rigidbody.velocity -= rigidbody.velocity * 8f * Time.deltaTime;
 
-				force += new Vector2(Input.GetAxis("Horizontal"), 0) * Time.deltaTime * speed;
-				force += new Vector2(0, Input.GetButtonDown("Jump") ? 160 * gravity : 0);
+				force += new Vector2(Input.GetAxis("Horizontal"), 0) * Time.deltaTime * 700 * speed;
 
 				gravity = 0;
+				jumped = false;
+				timeSinceGrounded = 0;
 			}
 			else {
-				force += new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0);
-				//				force += new Vector2(0, Input.GetButton("Jump") ? 10 * -gravity : 0);
+				force += new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * 60 * speed, 0);
 
-				if (SinusWave.Instance.Distance(transform.position) < 0.3f && Input.GetKey(KeyCode.E)) {
-					
+				timeSinceGrounded += Time.deltaTime;
+			}
+
+			if (timeSinceGrounded < 0.18f) {
+				if (Input.GetButtonDown("Jump") && timeSinceGrounded == 0) {
+					force += new Vector2(0, 50 * jumpStrength * GravityLine.Instance.GetValue(transform.position));
+					jumped = true;
+				}
+				else if (Input.GetButton("Jump") && jumped) {
+					force += new Vector2(0, 100 * jumpStrength * GravityLine.Instance.GetValue(transform.position) * Time.deltaTime);
 				}
 			}
 
-
-			spriteRenderer.color = Color.Lerp(Color.green, Color.red, (gravity + 1f) / 2);
+			force = force.normalized * Mathf.Max(force.magnitude, 3f);
 
 			rigidbody.gravityScale = (gravity);
 			rigidbody.AddForce(force);
@@ -70,30 +90,39 @@ namespace GlobalGameJam2017 {
 
         }
 
-		private void OnCollisionEnter2D (Collision2D collision) {
+		private bool CheckHittingPlatform (float direction = 1) {
 			var gravity = GravityLine.Instance.GetValue(transform.position);
+			var rayY = raycastTarget.y;
 
-			var direction = (Vector2.up * gravity).normalized;
-			var otherDirection = (transform.position - collision.transform.position).normalized;
+			var onTop = false;
 
-			var onTop = Vector2.Dot(direction, otherDirection) > 0;
-
-			Debug.Log(onTop ? "top" : "bottom");
-
-			if (onTop) {
-				lastGroundedPosition = transform.position;
-				grounded = true;
+			var hit = Physics2D.Raycast(transform.position + new Vector3(raycastTarget.x, 0), Vector2.down * gravity * direction, rayY, LayerMask.GetMask("Platforms"));
+			if (hit.collider != null) {
+				onTop = true;
 			}
-			else {
+
+			hit = Physics2D.Raycast(transform.position + new Vector3(-raycastTarget.x, 0), Vector2.down * gravity * direction, rayY, LayerMask.GetMask("Platforms"));
+			if (hit.collider != null) {
+				onTop = true;
+			}
+
+			return onTop;
+		}
+
+		void OnDrawGizmos () {
+			var gravity = GravityLine.Instance.GetValue(transform.position);
+			var xOffset = raycastTarget.x;
+			var yOffset = raycastTarget.y;
+
+			Gizmos.DrawLine(transform.position + new Vector3(xOffset, 0), transform.position + new Vector3(xOffset, 0) + Vector3.down * gravity * yOffset);
+			Gizmos.DrawLine(transform.position + new Vector3(-xOffset, 0), transform.position + new Vector3(-xOffset, 0) + Vector3.down * gravity * yOffset);
+		}
+
+		private void OnCollisionEnter2D (Collision2D collision) {
+			if (CheckHittingPlatform(-1) || !grounded && !collision.gameObject.CompareTag("Platform")) {
 				transform.position = lastGroundedPosition;
 				rigidbody.velocity = Vector2.zero;
 			}
-		}
-
-		private void OnCollisionExit2D (Collision2D collision) {
-			if (grounded) {}
-
-			grounded = false;
 		}
 
 		private void KickAnimation () {
