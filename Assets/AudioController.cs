@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour {
 
-    public static AudioController Instance;
+    //public static AudioController Instance;
 
-    private void Awake()
+    /*private void Awake()
     {
         if (Instance == null)
         {
@@ -18,7 +18,7 @@ public class AudioController : MonoBehaviour {
             Destroy(this.gameObject);
         }
 
-    }
+    }*/
 
 	// Use this for initialization
 	void Start () {
