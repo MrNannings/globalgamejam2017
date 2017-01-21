@@ -121,6 +121,8 @@ namespace GlobalGameJam2017 {
 
             if (Vector3.Distance(transform.position, positionOnSinus) < 0.5f)
             {
+                ShowTouchParticle(positionOnSinus);
+
                 float timeNow = Time.realtimeSinceStartup;
                 if (timeNow > lastInterval + updateInterval)
                 {
