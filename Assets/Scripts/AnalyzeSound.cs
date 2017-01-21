@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnalyzeSound : MonoBehaviour
  {
-    public static AnalyzeSound Instance { get; private set; }
+    //public static AnalyzeSound Instance { get; private set; }
 
     public float RmsValue;
     public float DbValue;
@@ -20,11 +20,11 @@ public class AnalyzeSound : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null)
+        /*if (Instance != null)
         {
             Debug.LogError("lala");
         }
-        Instance = this;
+        Instance = this;*/
     }
 
     void Start()

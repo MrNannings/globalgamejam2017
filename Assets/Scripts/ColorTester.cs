@@ -28,14 +28,19 @@ namespace GlobalGameJam2017 {
 		private float timeSinceGrounded = 0;
 
 		private new Rigidbody2D rigidbody;
-		private SpriteRenderer spriteRenderer;   
+		private SpriteRenderer spriteRenderer; 
+        
+        private AnalyzeSound AnalyzeSoundKick;  
 
         private void Awake () {
 			rigidbody = GetComponent<Rigidbody2D>();
 			spriteRenderer = GetComponent<SpriteRenderer>();
 
 			originalScale = child.localScale;
-		}
+
+            AnalyzeSoundKick = GameObject.Find("MusicOut Kick").GetComponent<AnalyzeSound>();
+
+        }
 
 		private void Start () {
             sinusWaveNodesList = new List<SinusWaveNode>();
@@ -154,7 +159,7 @@ namespace GlobalGameJam2017 {
 				return;
 			}
 
-			if (AnalyzeSound.Instance != null && AnalyzeSound.Instance.PitchValue > 50) {
+			if (AnalyzeSoundKick != null && AnalyzeSoundKick.PitchValue > 50) {
 				kickAnimationTime = 0;
 				child.localScale = originalScale;
 			}
