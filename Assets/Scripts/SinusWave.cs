@@ -10,7 +10,11 @@ public class SinusWave : MonoBehaviour {
 	public float frequency;
 	public Vector2 offset;
 
+	private LineRenderer lineRenderer;
+
 	void Awake () {
+		lineRenderer = GetComponent<LineRenderer>();
+
 		if (Instance != null) {
 			Debug.LogError("SinusWave instance already exists");
 		}
@@ -20,27 +24,26 @@ public class SinusWave : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		List<Vector3> positions = new List<Vector3>();
+
+		for (float i = -100; i < 100; i += 0.1f) {
+			positions.Add(new Vector3(i, GetValue(new Vector2(i, 0))));
+		}
+
+		lineRenderer.numPositions = positions.Count;
+		lineRenderer.SetPositions(positions.ToArray());
 	}
 	
 	// Update is called once per frame
 	void Update () {
     }
 
-	private void OnDrawGizmos () {
-		for (float i = -100; i < 100; i += 0.1f) {
-			Gizmos.DrawLine(new Vector3(i, Mathf.Sin(i)), new Vector3(i + 0.1f, Mathf.Sin(i + 0.1f)));
-		}
+	public float Distance (Vector2 position) {
+		return Vector2.Distance(position, GetProjectedPosition(position));
+	}
 
-		var positionOnSinus = new Vector3(transform.position.x, Mathf.Sin(transform.position.x));
-
-		if (Vector3.Distance(transform.position, positionOnSinus) < 0.5f) {
-			Gizmos.color = Color.yellow;
-			Gizmos.DrawCube(positionOnSinus, Vector3.one * 0.2f);
-			Gizmos.color = Color.white;
-        }
-
-		Gizmos.DrawCube(positionOnSinus, Vector3.one * 0.1f);
+	public Vector3 GetProjectedPosition (Vector2 position) {
+		return new Vector3(position.x, GetValue(position));
 	}
 
 	public float GetValue (Vector2 position) {

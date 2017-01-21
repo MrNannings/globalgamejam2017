@@ -45,6 +45,10 @@ namespace GlobalGameJam2017 {
 			else {
 				force += new Vector2(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0);
 				//				force += new Vector2(0, Input.GetButton("Jump") ? 10 * -gravity : 0);
+
+				if (SinusWave.Instance.Distance(transform.position) < 0.3f && Input.GetKey(KeyCode.E)) {
+					
+				}
 			}
 
 
