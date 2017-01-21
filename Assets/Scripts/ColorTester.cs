@@ -131,12 +131,14 @@ namespace GlobalGameJam2017 {
 			var hit = Physics2D.Raycast(transform.position + new Vector3(raycastTarget.x, 0), Vector2.down * gravity * direction, rayY, LayerMask.GetMask("Platforms"));
 			if (hit.collider != null) {
 				onTop = true;
-			}
+                soundsController.PlaySound(3);
+            }
 
 			hit = Physics2D.Raycast(transform.position + new Vector3(-raycastTarget.x, 0), Vector2.down * gravity * direction, rayY, LayerMask.GetMask("Platforms"));
 			if (hit.collider != null) {
 				onTop = true;
-			}
+                soundsController.PlaySound(3);
+            }
 
 			return onTop;
 		}
