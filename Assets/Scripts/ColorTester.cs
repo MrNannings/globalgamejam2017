@@ -108,7 +108,10 @@ namespace GlobalGameJam2017 {
 			var gravity = GravityLine.Instance.GetValue(transform.position);
 			var rayY = raycastTarget.y;
 
-			var onTop = false;
+            //easy fix
+            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y) * gravity, transform.localScale.z);
+
+            var onTop = false;
 
 			var hit = Physics2D.Raycast(transform.position + new Vector3(raycastTarget.x, 0), Vector2.down * gravity * direction, rayY, LayerMask.GetMask("Platforms"));
 			if (hit.collider != null) {
