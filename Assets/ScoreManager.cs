@@ -10,11 +10,16 @@ public class ScoreManager : MonoBehaviour
 
     public int currentScore;
     public int highScore;
-    public float timerLevel;
+    public float timePerUnit = 5;
 
     public Text scoreText;
     public Text timerText;
     public Text highScoreText;
+
+	public Transform levelStart;
+	public Transform levelEnd;
+
+	private float timerLevel;
 
     void Awake()
     {
@@ -52,6 +57,10 @@ public class ScoreManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
+		if (Input.GetButton("Reset")) {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		}
+
         UpdateUI();
     }
 
@@ -60,9 +69,11 @@ public class ScoreManager : MonoBehaviour
         scoreText = GameObject.Find("Score Text").GetComponent<Text>();
         timerText = GameObject.Find("Timer Text").GetComponent<Text>();
         highScoreText = GameObject.Find("HighScore Text").GetComponent<Text>();
+	    levelStart = GameObject.Find("Level Start").transform;
+	    levelEnd = GameObject.Find("Level End").transform;
 
         currentScore = 0;
-        timerLevel = 10;
+        timerLevel = (levelEnd.position.x - levelStart.position.x) * timePerUnit;
         highScoreText.text = "Score: " + highScore;
     }
 

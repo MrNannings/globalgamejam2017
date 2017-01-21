@@ -40,9 +40,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScore: 0
   highScore: 0
-  timerLevel: 0
+  timePerUnit: 0.5
   scoreText: {fileID: 0}
   timerText: {fileID: 0}
+  highScoreText: {fileID: 0}
+  levelStart: {fileID: 0}
+  levelEnd: {fileID: 0}
 --- !u!224 &224698773630900086
 RectTransform:
   m_ObjectHideFlags: 1
