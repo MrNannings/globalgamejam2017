@@ -80,15 +80,8 @@ namespace GlobalGameJam2017 {
 			grounded = false;
 		}
 
-		private void OnDrawGizmos () {
-			for (float i = -100; i < 100; i += 0.1f) {
-				Gizmos.DrawLine(new Vector3(i, Mathf.Sin(i)), new Vector3(i + 0.1f, Mathf.Sin(i + 0.1f)));
-			}
-		}
-
 		private void KickAnimation () {
 			if (kickAnimationTime >= 0) {
-				Debug.Log(curve.Evaluate(kickAnimationTime));
 				child.localScale = originalScale + Vector3.one * curve.Evaluate(kickAnimationTime) * 0.2f;
 
 				kickAnimationTime += Time.deltaTime;
