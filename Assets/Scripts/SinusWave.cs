@@ -40,9 +40,6 @@ public class SinusWave : MonoBehaviour {
 	}
 
 	public float GetValue (float x) {
-		var volume = AnalyzeSound.Instance.DbValue;
-		var rms = AnalyzeSound.Instance.RmsValue;
-
 		return Mathf.Sin(x * frequency) * amplitude;
 	}
 
