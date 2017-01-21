@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class SinusWave : MonoBehaviour {
 
 	public static SinusWave Instance;
@@ -46,7 +47,17 @@ public class SinusWave : MonoBehaviour {
 		return new Vector3(position.x, GetValue(position));
 	}
 
+	public Vector3 GetDirection (Vector2 position) {
+		var p1 = new Vector2(position.x - 0.0001f, GetValue(position.x - 0.0001f));
+		var p2 = new Vector2(position.x + 0.0001f, GetValue(position.x + 0.0001f));
+		return (p2 - p1).normalized;
+	}
+
+	public float GetValue (float x) {
+		return Mathf.Sin(x * frequency) * amplitude;
+	}
+
 	public float GetValue (Vector2 position) {
-		return Mathf.Sin(position.x * frequency) * amplitude;
+		return GetValue(position.x);
 	}
 }
