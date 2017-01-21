@@ -14,23 +14,28 @@ public class ScoreManager : MonoBehaviour
 
     public Text scoreText;
     public Text timerText;
+    public Text highScoreText;
 
     void Awake()
     {
         if (Instance == null)
         {
+            DontDestroyOnLoad(gameObject);
             Instance = this;
         }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 
-        scoreText = GameObject.Find("Score Text").GetComponent<Text>();
-        timerText = GameObject.Find("Timer Text").GetComponent<Text>();
+
+        Init();
     }
 
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -38,18 +43,32 @@ public class ScoreManager : MonoBehaviour
         timerLevel -= Time.deltaTime;
         if (timerLevel <= 0)
         {
-            
+            if(highScore < currentScore)
+            {
+                highScore = currentScore;
+                highScoreText.text = "Score: " + highScore;
+            }
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            
         }
 
         UpdateUI();
     }
 
+    public void Init()
+    {
+        scoreText = GameObject.Find("Score Text").GetComponent<Text>();
+        timerText = GameObject.Find("Timer Text").GetComponent<Text>();
+        highScoreText = GameObject.Find("HighScore Text").GetComponent<Text>();
+
+        currentScore = 0;
+        timerLevel = 10;
+        highScoreText.text = "Score: " + highScore;
+    }
+
     public void IncreaseScore(int score)
     {
         currentScore += score;
-        Debug.Log(score);
+        //Debug.Log(score);
     }
 
     public void UpdateUI()

@@ -33,8 +33,7 @@ namespace GlobalGameJam2017 {
 
 		private void Start () {
             sinusWaveNodesList = new List<SinusWaveNode>();
-            ScoreManager.Instance.currentScore = 0;
-            ScoreManager.Instance.timerLevel = 20;
+            ScoreManager.Instance.Init();
         }
 
 		private void Update () {
