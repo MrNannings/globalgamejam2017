@@ -2882,7 +2882,7 @@ Transform:
   m_Father: {fileID: 769384287}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &138353716
+--- !u!1001 &149100706
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2927,7 +2927,7 @@ Prefab:
     - target: {fileID: 224348450497411910, guid: 7615ccaaaad8f6540bdc2cf2937b4d99,
         type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 224348450497411910, guid: 7615ccaaaad8f6540bdc2cf2937b4d99,
         type: 2}
@@ -3056,8 +3056,8 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2e4f312a7892bac42929b5de4bb01870, type: 2}
+  - {fileID: 2100000, guid: 2e4f312a7892bac42929b5de4bb01870, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3103,7 +3103,7 @@ ParticleSystem:
   speed: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   autoRandomSeed: 1
   startDelay:
     scalar: 0
@@ -3147,7 +3147,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1678234405
+  randomSeed: 1686483806
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5751,9 +5751,9 @@ GameObject:
   m_Component:
   - component: {fileID: 253388767}
   - component: {fileID: 253388768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RectangleObject
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5846,7 +5846,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c8f5b48b7d48d449b0faea07dbcc032, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72cda1b53c3e37940a2bfbf981c2f0f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6025,9 +6025,9 @@ GameObject:
   m_Component:
   - component: {fileID: 723437772}
   - component: {fileID: 723437773}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RectangleObject
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6126,9 +6126,9 @@ GameObject:
   m_Component:
   - component: {fileID: 855798499}
   - component: {fileID: 855798500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RectangleObject
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6169,7 +6169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 901033780}
   m_Layer: 0
-  m_Name: LevelEnd
+  m_Name: Level End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6197,9 +6197,9 @@ GameObject:
   m_Component:
   - component: {fileID: 994426946}
   - component: {fileID: 994426947}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RectangleObject
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6283,9 +6283,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1010479407}
   - component: {fileID: 1010479408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RectangleObject
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6489,7 +6489,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c85d7ac92a34ad45a884366cac373c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 80
+  debug: 1
+  jumpStrength: 4
+  speed: 2
+  raycastTarget: {x: 0.2, y: 0.6}
   curve:
     serializedVersion: 2
     m_Curve:
@@ -6516,7 +6519,7 @@ MonoBehaviour:
     m_RotationOrder: 0
   child: {fileID: 284708270}
   updateInterval: 0.5
-  playerAnimator: {fileID: 0}
+  playerAnimator: {fileID: 284708272}
   touchParticle: {fileID: 198326870}
 --- !u!212 &1098101540
 SpriteRenderer:
@@ -6599,9 +6602,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.010547161}
+  m_Offset: {x: 0, y: 0.021094799}
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.0758219}
+  m_Size: {x: 1, y: 2.096915}
 --- !u!1 &1164685400
 GameObject:
   m_ObjectHideFlags: 0
@@ -9336,7 +9339,7 @@ MonoBehaviour:
   levelStart: {fileID: 1255401306}
   levelEnd: {fileID: 901033780}
   scoreParticleSystem: {fileID: 2059295}
---- !u!1001 &1188842740
+--- !u!1001 &1202679222
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9381,7 +9384,7 @@ Prefab:
     - target: {fileID: 224698773630900086, guid: 757975e840b62154e98b8036da536f57,
         type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 224698773630900086, guid: 757975e840b62154e98b8036da536f57,
         type: 2}
@@ -9433,6 +9436,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114475476475161906, guid: 757975e840b62154e98b8036da536f57,
+        type: 2}
+      propertyPath: levelStart
+      value: 
+      objectReference: {fileID: 1255401306}
+    - target: {fileID: 114475476475161906, guid: 757975e840b62154e98b8036da536f57,
+        type: 2}
+      propertyPath: levelEnd
+      value: 
+      objectReference: {fileID: 901033780}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 757975e840b62154e98b8036da536f57, type: 2}
   m_IsPrefabParent: 0
@@ -9445,7 +9458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1255401306}
   m_Layer: 0
-  m_Name: LevelStart
+  m_Name: Level Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9681,9 +9694,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1599795890}
   - component: {fileID: 1599795891}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RectangleObject
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9764,7 +9777,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.20588237, g: 0.20588237, b: 0.20588237, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -9796,7 +9809,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1620897923}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.86, y: -1.6, z: -9.9}
+  m_LocalPosition: {x: 0, y: 0, z: -9.9}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1098101541}
@@ -9841,9 +9854,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1715471571}
   - component: {fileID: 1715471572}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RectangleObject
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10009,9 +10022,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1870321612}
   - component: {fileID: 1870321613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RectangleObject
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10052,9 +10065,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1919180427}
   - component: {fileID: 1919180428}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RectangleObject
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

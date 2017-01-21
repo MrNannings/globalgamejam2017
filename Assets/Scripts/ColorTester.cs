@@ -16,6 +16,7 @@ namespace GlobalGameJam2017 {
         public List<SinusWaveNode> sinusWaveNodesList;
         public float updateInterval = 0.5F; //time between nodes
         private double lastInterval;
+        public Animator playerAnimator;
 
         public GameObject touchParticle;
 
@@ -87,6 +88,16 @@ namespace GlobalGameJam2017 {
 			KickAnimation();
 
             CheckTouchWave();
+
+
+            if (gravity != 0)
+            {
+
+                    transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs( transform.localScale.y) * gravity, transform.localScale.z);           
+            }
+
+            playerAnimator.SetBool("grounded", grounded);
+            playerAnimator.SetFloat("velocityX", Mathf.Abs(rigidbody.velocity.x));
 
         }
 
