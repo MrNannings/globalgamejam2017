@@ -99,6 +99,8 @@ namespace GlobalGameJam2017 {
 
             playerAnimator.SetBool("grounded", grounded);
             playerAnimator.SetFloat("velocityX", Mathf.Abs(rigidbody.velocity.x));
+            playerAnimator.SetFloat("velocityY", rigidbody.velocity.y * gravity);
+            //Debug.Log(rigidbody.velocity.y * gravity);
 
         }
 
