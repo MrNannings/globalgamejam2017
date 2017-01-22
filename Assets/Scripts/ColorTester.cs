@@ -19,6 +19,7 @@ namespace GlobalGameJam2017 {
         public Animator playerAnimator;
         public Animator shadowAnimator;
 		public Material PlatformShadowMaterial;
+        private bool shrinkAnimation = false;
 
         private bool grounded;
 		private bool jumped;
@@ -64,6 +65,11 @@ namespace GlobalGameJam2017 {
 		}
 
 		private void Update () {
+            if(shrinkAnimation)
+            {
+                GettingHitShrinkAnimation();
+                return;
+            }
 			if (CheckHittingPlatform()) {
 				if (!grounded) {
 					soundsController.PlaySound(3);
@@ -172,11 +178,32 @@ namespace GlobalGameJam2017 {
 	        }
 		}
 
+        private void GettingHitShrinkAnimation()
+        { 
+            if (child.localScale.x > 0)
+            {
+                child.localScale -= new Vector3(.05f, .05f, 0);
+            }
+            else
+            {
+                transform.position = lastGroundedPosition;
+                rigidbody.velocity = Vector2.zero;
+                child.localScale = new Vector3(1,1,0);
+                shrinkAnimation = false;
+                GetComponent<Rigidbody2D>().isKinematic = false;
+            }
+        }
+
         private void GettingHit()
         {
             soundsController.PlaySound(14);
-            transform.position = lastGroundedPosition;
-            rigidbody.velocity = Vector2.zero;
+            if (!shrinkAnimation)
+            {
+                shrinkAnimation = true;
+                GetComponent<Rigidbody2D>().isKinematic = true;
+            }
+            //transform.position = lastGroundedPosition;
+            //rigidbody.velocity = Vector2.zero;
         }
 
 		private void OnCollisionEnter2D (Collision2D collision) {
