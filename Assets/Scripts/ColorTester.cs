@@ -47,7 +47,12 @@ namespace GlobalGameJam2017 {
 		private void Start () {
             sinusWaveNodesList = new List<SinusWaveNode>();
             ScoreManager.Instance.Init();
-        }
+
+			var startPosition = GameObject.Find("startposition");
+			if (startPosition != null) {
+				transform.position = startPosition.transform.position;
+			}
+		}
 
 		private void Update () {
 			if (CheckHittingPlatform()) {
