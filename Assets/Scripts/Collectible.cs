@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using GlobalGameJam2017;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour {
@@ -20,7 +21,7 @@ public class Collectible : MonoBehaviour {
 
 	private void OnTriggerEnter2D (Collider2D collider) {
 		if (collider.tag == "Player") {
-
+			GameObject.Find("Player").GetComponent<ColorTester>().Collect(this);
 
 			Destroy(gameObject);
 		}

@@ -16,8 +16,11 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     public Text timerText;
     public Text highScoreText;
+    public Text collectibleText;
 
 	private float timerLevel;
+	private int collectibleCount;
+	private int collected;
 
     void Awake()
     {
@@ -30,8 +33,7 @@ public class ScoreManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-
+		
         Init();
     }
 
@@ -45,17 +47,17 @@ public class ScoreManager : MonoBehaviour
 	void Update ()
     {
         timerLevel += Time.deltaTime;
-        if (timerLevel <= 0)
-        {
-            if(highScore < currentScore)
-            {
-                highScore = currentScore;
-                highScoreText.text = "Score: " + highScore;
-            }
-
-			if (!debug) 
-				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+//        if (timerLevel <= 0)
+//        {
+//            if(highScore < currentScore)
+//            {
+//                highScore = currentScore;
+//                highScoreText.text = "Score: " + highScore;
+//            }
+//
+//			if (!debug) 
+//				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+//        }
 
 		if (Input.GetButton("Reset")) {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -64,15 +66,28 @@ public class ScoreManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void Init()
-    {
-        scoreText = GameObject.Find("Score Text").GetComponent<Text>();
+    public void Init() {
+	    var obj = GameObject.Find("Score Text");
+        scoreText = obj != null ? obj.GetComponent<Text>() : null;
+
+		obj = GameObject.Find("Score Text");
+		highScoreText = obj != null ? obj.GetComponent<Text>() : null;
+
         timerText = GameObject.Find("Timer Text").GetComponent<Text>();
-        highScoreText = GameObject.Find("HighScore Text").GetComponent<Text>();
+        collectibleText = GameObject.Find("Collectible Text").GetComponent<Text>();
 
         currentScore = 0;
-        highScoreText.text = "Score: " + highScore;
+
+		collectibleCount = GameObject.FindGameObjectsWithTag("keycube").Length;
+
+	    if (highScoreText != null) {
+		    highScoreText.text = "Score: " + highScore;
+	    }
     }
+
+	public void Collect () {
+		collected++;
+	}
 
     public void IncreaseScore(int score)
     {
@@ -82,8 +97,22 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        scoreText.text = "Score: " + currentScore;
-        timerText.text = timerLevel.ToString("F1");
+	    if (scoreText != null) {
+		    scoreText.text = "Score: " + currentScore;
+	    }
+
+	    if (timerText != null) {
+		    timerText.text = timerLevel.ToString("F1");
+	    }
+
+	    if (collectibleText != null) {
+		    if (collectibleCount > 0) {
+			    collectibleText.text = collected + "/" + collectibleCount;
+		    }
+		    else {
+			    collectibleText.text = "";
+		    }
+	    }
     }
 
     public int CalculateScoreBetweenNode(SinusWaveNode node1, SinusWaveNode node2)

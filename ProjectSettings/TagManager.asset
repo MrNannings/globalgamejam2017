@@ -10,6 +10,7 @@ TagManager:
   - middleline
   - Enemy
   - Wall
+  - keycube
   layers:
   - Default
   - TransparentFX

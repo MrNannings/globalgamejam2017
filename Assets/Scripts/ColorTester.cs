@@ -210,6 +210,9 @@ namespace GlobalGameJam2017 {
 			}
 		}
 
+		public void Collect (Collectible collectible) {
+			ScoreManager.Instance.Collect();
+		}
 
         public void CheckTouchWave()
         {

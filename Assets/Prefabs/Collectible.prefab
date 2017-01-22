@@ -255,11 +255,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4982614420568076}
-  - component: {fileID: 65582587809035420}
+  - component: {fileID: 58133095630942722}
   - component: {fileID: 114071316678206482}
   m_Layer: 0
   m_Name: Collectible
-  m_TagString: Untagged
+  m_TagString: keycube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,18 +517,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65582587809035420
-BoxCollider:
+--- !u!58 &58133095630942722
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870596091637628}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.5
 --- !u!114 &114071316678206482
 MonoBehaviour:
   m_ObjectHideFlags: 1
