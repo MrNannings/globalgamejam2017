@@ -95,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1291925596695866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.48, y: 0, z: 0}
+  m_LocalPosition: {x: 18.21, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4987025556060722}
@@ -124,7 +124,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1928386383051220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.14, y: 0, z: 0}
+  m_LocalPosition: {x: -10.14, y: 4.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4987025556060722}
@@ -143,9 +143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 1
   frequency: 1
-  offset: {x: 0, y: 0}
-  amplitudeAnimationStrength: 1
-  frequencyAnimationStrength: 0.2
+  amplitudeAnimationStrength: 0.8
+  frequencyAnimationStrength: 0.12
   curve:
     serializedVersion: 2
     m_Curve:
@@ -170,8 +169,8 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 0
       value: 0
-      inSlope: 4.151592
-      outSlope: 4.151592
+      inSlope: 1.899262
+      outSlope: 1.899262
       tangentMode: 0
     - serializedVersion: 2
       time: 0.5
@@ -182,8 +181,8 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 1
       value: 0
-      inSlope: -3.7741733
-      outSlope: -3.7741733
+      inSlope: -1.3209604
+      outSlope: -1.3209604
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
