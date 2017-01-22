@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Wall
   - keycube
+  - horizontalobstacle
+  - verticalobstacle
   layers:
   - Default
   - TransparentFX
