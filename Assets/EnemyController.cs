@@ -53,13 +53,16 @@ public class EnemyController : MonoBehaviour {
             }
         }
 
+		KickAnimation();
+
     }
 
-    private void KickAnimation()
-    {
+    private void KickAnimation() {
+	    var sign = direction == "up" ? 1 : -1;
+
         if (kickAnimationTime >= 0)
         {
-            transform.localScale = orginalsize + Vector3.one * curve.Evaluate(kickAnimationTime) * 0.2f;
+            transform.localScale = orginalsize * sign + Vector3.one * curve.Evaluate(kickAnimationTime) * 0.2f;
 
             kickAnimationTime += Time.deltaTime;
 
@@ -73,7 +76,7 @@ public class EnemyController : MonoBehaviour {
         if (AnalyzeSoundKick != null && AnalyzeSoundKick.PitchValue > 50)
         {
             kickAnimationTime = 0;
-            transform.localScale = orginalsize;
+            transform.localScale = orginalsize * sign;
         }
     }
 }

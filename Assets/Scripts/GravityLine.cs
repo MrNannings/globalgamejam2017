@@ -23,6 +23,8 @@ namespace GlobalGameJam2017 {
 		void Update () {}
 
 		public float GetValue (Vector2 pos) {
+			return SinusWave.Instance.GetValue(pos) < pos.y ? 1 : -1;
+
 			return Mathf.Sign(pos.y / 10);
 		}
 
