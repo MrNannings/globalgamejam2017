@@ -132,10 +132,10 @@
 </data>
  </layer>
  <objectgroup name="walls">
-  <object id="15" x="3808" y="32" width="32" height="1856"/>
-  <object id="17" x="0" y="32" width="32" height="1856"/>
-  <object id="18" x="0" y="0" width="3808" height="32"/>
-  <object id="19" x="0" y="1888" width="3808" height="32"/>
+  <object id="15" x="3840" y="0" width="32" height="1888"/>
+  <object id="17" x="-32" y="0" width="32" height="1920"/>
+  <object id="18" x="0" y="-32" width="3840" height="32"/>
+  <object id="19" x="0" y="1920" width="3840" height="32"/>
  </objectgroup>
  <objectgroup name="platforms">
   <object id="5" x="0" y="704" width="160" height="32"/>
@@ -150,7 +150,7 @@
  </objectgroup>
  <objectgroup name="Object Layer">
   <object id="2" name="middleLine" x="0" y="960" width="3840" height="32"/>
-  <object id="3" name="startposition" x="0" y="672" width="32" height="32">
+  <object id="3" name="startposition" x="60.6061" y="638.667" width="32" height="32">
    <properties>
     <property name="rotation" type="float" value="0"/>
    </properties>
