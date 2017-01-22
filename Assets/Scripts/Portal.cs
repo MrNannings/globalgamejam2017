@@ -15,6 +15,8 @@ public class Portal : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D () {
+		GameObject.Find("Sounds Controller").GetComponent<SoundsController>().PlaySound(16);
+
 		App.LoadNextLevel();
 	}
 }

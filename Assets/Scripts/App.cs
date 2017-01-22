@@ -43,6 +43,11 @@ public class App : MonoBehaviour {
 			levelName += "0";
 		}
 		levelName += levelNumber + 1;
+		
+		if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) {
+			SceneManager.LoadScene("MainMenu");
+			return;
+		}
 
 		SceneManager.LoadScene(levelName);
 	}
