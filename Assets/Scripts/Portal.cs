@@ -20,6 +20,10 @@ public class Portal : MonoBehaviour {
 		if (levelEndTimer != null && levelEndTimer.ElapsedMilliseconds > 500) {
 			App.LoadNextLevel();
 		}
+
+		if (Input.GetKey(KeyCode.K)) {
+			OnTriggerEnter2D();
+		}
 	}
 
 	void OnTriggerEnter2D () {

@@ -16,6 +16,8 @@ public class App : MonoBehaviour {
 	}
 
 	public static void LoadNextLevel () {
+		ScoreManager.Instance.timerLevel = 0;
+
 		var name = SceneManager.GetActiveScene().name;
 
 		name = name.Remove(0, "level".Length);
