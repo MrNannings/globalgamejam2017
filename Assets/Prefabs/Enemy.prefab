@@ -93,7 +93,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   direction: up
-  enemyHorizontalSprite: {fileID: 0}
+  enemyHorizontalSprite: {fileID: 21300000, guid: a54f9cbf8b7008942b263ef996b68fcb,
+    type: 3}
 --- !u!212 &212916260980609964
 SpriteRenderer:
   m_ObjectHideFlags: 1

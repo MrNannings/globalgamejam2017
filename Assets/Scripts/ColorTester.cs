@@ -132,7 +132,7 @@ namespace GlobalGameJam2017 {
                 VerticalFlip();
             }
             //horizontal flip
-			if (Mathf.Abs(rigidbody.velocity.x) > 0.002f) {
+			if (Mathf.Abs(rigidbody.velocity.x) > 0.01f) {
 				transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(rigidbody.velocity.x), transform.localScale.y, transform.localScale.z);
 			}
 
