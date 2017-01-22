@@ -6,7 +6,7 @@ public class Portal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		transform.position = GameObject.Find("endposition").transform.position;
 	}
 	
 	// Update is called once per frame

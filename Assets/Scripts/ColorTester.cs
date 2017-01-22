@@ -19,8 +19,6 @@ namespace GlobalGameJam2017 {
         public Animator playerAnimator;
         public Animator shadowAnimator;
 
-        public GameObject touchParticle;
-
         private bool grounded;
 		private bool jumped;
 		private Vector2 lastGroundedPosition;
@@ -206,18 +204,15 @@ namespace GlobalGameJam2017 {
 
         public void CheckTouchWave()
         {
-            var positionOnSinus = new Vector3(transform.position.x, SinusWave.Instance.GetValue(transform.position));
-
-            if (Vector3.Distance(transform.position, positionOnSinus) < 0.5f)
+            if (SinusWave.Instance.IsTouching(transform.position))
             {
-                ShowTouchParticle(positionOnSinus);
-                soundsController.PlaySound(2);
-
+				SinusWave.Instance.Touch(transform.position);
+                
                 float timeNow = Time.realtimeSinceStartup;
                 if (timeNow > lastInterval + updateInterval)
                 {
                     lastInterval = timeNow;
-                    sinusWaveNodesList.Add(new SinusWaveNode(sinusWaveNodesList.Count, 10, positionOnSinus));
+//                    sinusWaveNodesList.Add(new SinusWaveNode(sinusWaveNodesList.Count, 10, positionOnSinus));
                     if (sinusWaveNodesList.Count > 1)
                     {
                         ScoreManager.Instance.IncreaseScore(
@@ -231,16 +226,7 @@ namespace GlobalGameJam2017 {
             }
         }
 
-        public void ShowTouchParticle(Vector3 position)
-        {
-            if(!touchParticle.GetComponent<ParticleSystem>().isPlaying)
-            {
-                touchParticle.GetComponent<ParticleSystem>().Clear();
-                touchParticle.transform.position = position;
-                touchParticle.GetComponent<ParticleSystem>().Play();
-            }
-
-        }
+        
 
     }
 

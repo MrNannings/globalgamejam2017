@@ -9,19 +9,24 @@ public class SinusWave : MonoBehaviour {
 
 	public float amplitude;
 	public float frequency;
-	public Vector2 offset;
 	public float amplitudeAnimationStrength = 0.2f;
 	public float frequencyAnimationStrength = 0.2f;
 	public AnimationCurve curve;
 	public AnimationCurve centerEffectCurve;
+	public GameObject touchParticle;
+	public Transform levelStart;
+	public Transform levelEnd;
 
-	private Transform levelStart;
-	private Transform levelEnd;
+	private Vector2 offset;
 	private AnalyzeSound bassLine;
 	private AnalyzeSound kickLine;
+	private SoundsController soundsController;
 	private float frequencyAnimationTime = -1;
 	private float amplitubeAnimationTime = -1;
+	private List<SinusWaveNode> touchNodes = new List<SinusWaveNode>();
 
+	private NodePair lastTouchPair;
+	
 	void Awake () {
 		if (Instance != null) {
 			Debug.LogError("SinusWave instance already exists");
@@ -29,14 +34,19 @@ public class SinusWave : MonoBehaviour {
 
 		Instance = this;
 
-		levelStart = GameObject.Find("Level Start").transform;
-		levelEnd = GameObject.Find("Level End").transform;
 		bassLine = GameObject.Find("MusicOut Bass").GetComponent<AnalyzeSound>();
 		kickLine = GameObject.Find("MusicOut Kick").GetComponent<AnalyzeSound>();
+		soundsController = GameObject.Find("Sounds Controller").GetComponent<SoundsController>();
 	}
 
 	// Use this for initialization
-	void Start () {}
+	void Start () {
+		var middleline = GameObject.Find("middleLine").GetComponent<BoxCollider2D>();
+
+		levelStart.transform.position = new Vector3(middleline.bounds.min.x, middleline.bounds.center.y);
+		levelEnd.transform.position = new Vector3(middleline.bounds.max.x, middleline.bounds.center.y);
+		offset = levelStart.transform.position;
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -66,6 +76,36 @@ public class SinusWave : MonoBehaviour {
 
 	public float GetValue (Vector2 position) {
 		return GetValue(position.x);
+	}
+
+	public bool IsTouching (Vector2 position) {
+		var positionOnSinus = new Vector3(position.x, GetValue(position));
+
+		return Vector3.Distance(position, positionOnSinus) < 0.5f;
+	}
+
+	public void Touch (Vector2 position) {
+		var positionOnSinus = new Vector3(position.x, GetValue(position));
+
+		ShowTouchParticle(positionOnSinus);
+		soundsController.PlaySound(2);
+
+		if (lastTouchPair == null) {
+			lastTouchPair = new NodePair(new SinusWaveNode(0, 0, position));
+		}
+		else if (lastTouchPair.node2 == null) {
+			
+		}
+	}
+
+	public void ShowTouchParticle(Vector3 position)
+    {
+        if(!touchParticle.GetComponent<ParticleSystem>().isPlaying)
+        {
+            touchParticle.GetComponent<ParticleSystem>().Clear();
+            touchParticle.transform.position = position;
+            touchParticle.GetComponent<ParticleSystem>().Play();
+        }
 	}
 
 	private float AnimationStrengthByMap (float x) {
@@ -113,5 +153,16 @@ public class SinusWave : MonoBehaviour {
 		if (amplitubeAnimationTime > curve.keys.Last().time) {
 			amplitubeAnimationTime = -1;
 		}
+	}
+
+	private class NodePair {
+
+		public SinusWaveNode node1, node2;
+
+		public NodePair (SinusWaveNode node1, SinusWaveNode node2 = null) {
+			this.node1 = node1;
+			this.node2 = node2;
+		}
+
 	}
 }
