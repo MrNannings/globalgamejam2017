@@ -32,7 +32,8 @@ namespace GlobalGameJam2017 {
 		private SpriteRenderer spriteRenderer; 
         
         private AnalyzeSound AnalyzeSoundKick;
-        private SoundsController soundsController;  
+        private SoundsController soundsController;
+		private Transform platformShadow;
 
         private void Awake () {
 			rigidbody = GetComponent<Rigidbody2D>();
@@ -42,6 +43,7 @@ namespace GlobalGameJam2017 {
 
             AnalyzeSoundKick = GameObject.Find("MusicOut Kick").GetComponent<AnalyzeSound>();
             soundsController = GameObject.Find("Sounds Controller").GetComponent<SoundsController>();
+	        platformShadow = GameObject.Find("PlatformShadow").transform;
         }
 
 		private void Start () {
@@ -114,7 +116,7 @@ namespace GlobalGameJam2017 {
             //vertical flip
             if (gravity != 0)
             {
-                transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs( transform.localScale.y) * gravity, transform.localScale.z);           
+                VerticalFlip();
             }
             //horizontal flip
 			if (Mathf.Abs(rigidbody.velocity.x) > 0.002f) {
@@ -135,8 +137,8 @@ namespace GlobalGameJam2017 {
 			var gravity = GravityLine.Instance.GetValue(transform.position);
 			var rayY = raycastTarget.y;
 
-            //easy fix
-            transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs(transform.localScale.y) * gravity, transform.localScale.z);
+            //easier fix
+            VerticalFlip();
 
             var onTop = false;
 
@@ -151,6 +153,16 @@ namespace GlobalGameJam2017 {
             }
 
 			return onTop;
+		}
+
+		private void VerticalFlip () {
+			var gravity = GravityLine.Instance.GetValue(transform.position);
+
+			transform.localScale = new Vector3(transform.localScale.x, Mathf.Abs( transform.localScale.y) * gravity, transform.localScale.z);
+
+	        if (Mathf.Sign(platformShadow.localPosition.y) == Mathf.Sign(gravity)) {
+		        platformShadow.localPosition = new Vector3(platformShadow.localPosition.x, -platformShadow.localPosition.y);
+	        }
 		}
 
         private void GettingHit()
