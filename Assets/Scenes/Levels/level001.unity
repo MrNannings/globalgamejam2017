@@ -1207,7 +1207,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -536954982
+  randomSeed: 1451932920
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7226,9 +7226,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesPerUnit: 40
   speed: 3
+  avoidanceStrength: 1
   levelStart: {fileID: 172303840}
   levelEnd: {fileID: 1445035450}
   scoreParticleSystem: {fileID: 1833065290}
+  obstacles: []
+  avoidanceCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1609178307
 Transform:
   m_ObjectHideFlags: 0
@@ -7463,7 +7471,15 @@ MonoBehaviour:
   amplitude: 1
   frequency: 1
   offset: {x: 0, y: 0}
+  amplitudeAnimationStrength: 0.2
+  frequencyAnimationStrength: 0.2
   curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  centerEffectCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
@@ -10770,11 +10786,6 @@ Prefab:
     - target: {fileID: 4008262654674684, guid: 711aadbbaf4e4814890f182ebcdfa250, type: 2}
       propertyPath: m_RootOrder
       value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114666821150481716, guid: 711aadbbaf4e4814890f182ebcdfa250,
-        type: 2}
-      propertyPath: intervalOffset
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 711aadbbaf4e4814890f182ebcdfa250, type: 2}

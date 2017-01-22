@@ -42,7 +42,6 @@ namespace GlobalGameJam2017 {
 
             AnalyzeSoundKick = GameObject.Find("MusicOut Kick").GetComponent<AnalyzeSound>();
             soundsController = GameObject.Find("Sounds Controller").GetComponent<SoundsController>();
-
         }
 
 		private void Start () {
