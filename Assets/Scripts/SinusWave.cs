@@ -13,6 +13,7 @@ public class SinusWave : MonoBehaviour {
 	public float amplitudeAnimationStrength = 0.2f;
 	public float frequencyAnimationStrength = 0.2f;
 	public AnimationCurve curve;
+	public AnimationCurve centerEffectCurve;
 
 	private Transform levelStart;
 	private Transform levelEnd;
@@ -57,8 +58,8 @@ public class SinusWave : MonoBehaviour {
 	}
 
 	public float GetValue (float x) {
-		var amplitudeAnimation = curve.Evaluate(amplitubeAnimationTime) * amplitudeAnimationStrength;
-		var frequencyAnimation = curve.Evaluate(frequencyAnimationTime) * frequencyAnimationStrength;
+		var amplitudeAnimation = curve.Evaluate(amplitubeAnimationTime) * amplitudeAnimationStrength * AnimationStrengthByMap(x);
+		var frequencyAnimation = curve.Evaluate(frequencyAnimationTime) * frequencyAnimationStrength * AnimationStrengthByMap(x);
 
 		return Mathf.Sin(x * (frequency + frequencyAnimation) + offset.x) * (amplitude + amplitudeAnimation) + offset.y;
 	}
@@ -68,14 +69,10 @@ public class SinusWave : MonoBehaviour {
 	}
 
 	private float AnimationStrengthByMap (float x) {
+		var localized = x - levelStart.position.x;
 		var length = levelEnd.position.x - levelStart.position.x;
-		var normalized = x / length;
 
-		if (normalized > 0.5f) {
-			normalized = 0.5f - (normalized - 0.5f);
-		}
-
-		return normalized * 2;
+		return centerEffectCurve.Evaluate(localized / length);
 	}
 
 	private void SetAnimationTime () {
