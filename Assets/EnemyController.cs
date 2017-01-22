@@ -7,8 +7,9 @@ public class EnemyController : MonoBehaviour {
 
     public BoxCollider2D boxColliderPath;
     public AnimationCurve curve;
+    public string direction = "up";
+    public Sprite enemyHorizontalSprite;
 
-    private string direction = "up";
     private Vector3 orginalsize;
     private AnalyzeSound AnalyzeSoundKick;
     private float kickAnimationTime = -1;
@@ -21,8 +22,13 @@ public class EnemyController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        
+        if (direction == "right" || direction == "left")
+        {
+            transform.rotation *= Quaternion.Euler(0, 0, -90f);
+            if(enemyHorizontalSprite != null) GetComponent<SpriteRenderer>().sprite = enemyHorizontalSprite;
+        }
         orginalsize = transform.localScale;
-
     }
 	
 	// Update is called once per frame
@@ -54,8 +60,34 @@ public class EnemyController : MonoBehaviour {
                 transform.localScale = new Vector3(orginalsize.x, orginalsize.y, 1);
             }
         }
+        if (direction == "right")
+        {
+            if (boxColliderPath.bounds.max.x > transform.position.x)
+            {
+                transform.position += new Vector3(3, 0, 0) * Time.deltaTime * animationSpeedIncrease;
+            }
+            else
+            {
+                direction = "left";
+                //transform.localScale = new Vector3(-orginalsize.x, -orginalsize.y, 1);
+                transform.rotation *= Quaternion.Euler(0, 0, 180f);
+            }
+        }
+        else if (direction == "left")
+        {
+            if (boxColliderPath.bounds.min.x < transform.position.x)
+            {
+                transform.position -= new Vector3(3, 0, 0) * Time.deltaTime * animationSpeedIncrease;
+            }
+            else
+            {
+                direction = "right";
+                transform.rotation *= Quaternion.Euler(0, 0, -180f);
+                //transform.localScale = new Vector3(-orginalsize.x, orginalsize.y, 1);
+            }
+        }
 
-		KickAnimation();
+        KickAnimation();
 
     }
 
