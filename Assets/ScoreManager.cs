@@ -78,6 +78,7 @@ public class ScoreManager : MonoBehaviour
 
         currentScore = 0;
 
+	    collected = 0;
 		collectibleCount = GameObject.FindGameObjectsWithTag("keycube").Length;
 
 	    if (highScoreText != null) {
