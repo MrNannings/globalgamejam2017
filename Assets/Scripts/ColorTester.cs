@@ -18,6 +18,7 @@ namespace GlobalGameJam2017 {
         private double lastInterval;
         public Animator playerAnimator;
         public Animator shadowAnimator;
+		public Material PlatformShadowMaterial;
 
         private bool grounded;
 		private bool jumped;
@@ -41,7 +42,15 @@ namespace GlobalGameJam2017 {
 
             AnalyzeSoundKick = GameObject.Find("MusicOut Kick").GetComponent<AnalyzeSound>();
             soundsController = GameObject.Find("Sounds Controller").GetComponent<SoundsController>();
-	        platformShadow = GameObject.Find("PlatformShadow").transform;
+
+	        var platformImages = GameObject.Find("platform").transform.FindChild("mondriaanTiles");
+
+			platformShadow = Instantiate(platformImages.gameObject).transform;
+			
+	        platformShadow.SetParent(platformImages, false);
+			platformShadow.transform.position += new Vector3(0.07f, -0.07f);
+
+	        platformShadow.GetComponent<MeshRenderer>().material = PlatformShadowMaterial;
         }
 
 		private void Start () {

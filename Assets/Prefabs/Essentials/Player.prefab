@@ -312,6 +312,8 @@ MonoBehaviour:
   updateInterval: 0.5
   playerAnimator: {fileID: 95591445274397366}
   shadowAnimator: {fileID: 95237283226515650}
+  PlatformShadowMaterial: {fileID: 2100000, guid: dc9cac6122925204e8a9e8edc306f860,
+    type: 2}
 --- !u!124 &124833641451625288
 Behaviour:
   m_ObjectHideFlags: 1
