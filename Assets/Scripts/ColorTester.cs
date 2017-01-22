@@ -192,6 +192,7 @@ namespace GlobalGameJam2017 {
 			}
 			else {
 				child.localScale += new Vector3(Time.deltaTime * 1.5f, Time.deltaTime * 1.5f, 1);
+				rigidbody.velocity = Vector2.zero;
 			}
 		}
 
@@ -224,7 +225,7 @@ namespace GlobalGameJam2017 {
         }
 
 		private void OnCollisionEnter2D (Collision2D collision) {
-			if (CheckHittingPlatform(-1) || !grounded && !collision.gameObject.CompareTag("Platform")) {
+			if (CheckHittingPlatform(-1) || !grounded && collision.gameObject.CompareTag("Enemy")) {
                 GettingHit();
             }
 		}
