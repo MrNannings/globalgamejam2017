@@ -21,6 +21,7 @@ public class ScoreManager : MonoBehaviour
 
 	private int collectibleCount;
 	private int collected;
+    private bool collectedComplete = false;
 
     void Awake()
     {
@@ -53,6 +54,17 @@ public class ScoreManager : MonoBehaviour
 		}
 
         UpdateUI();
+
+        //check if all collictables are collected to open portal
+        if (collected == collectibleCount || (collected == 0 && collectibleCount == 0))
+        {
+            if (!collectedComplete)
+            {
+                GameObject.FindGameObjectWithTag("portal").transform.position -= new Vector3(0, 10000, 0);
+                collectedComplete = true;
+            }
+
+        }
     }
 
     public void Init() {
@@ -69,6 +81,7 @@ public class ScoreManager : MonoBehaviour
 
 	    collected = 0;
 		collectibleCount = GameObject.FindGameObjectsWithTag("keycube").Length;
+        collectedComplete = false;
 
 	    if (highScoreText != null) {
 		    highScoreText.text = "Score: " + highScore;

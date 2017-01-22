@@ -130,6 +130,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 1962043555450534, guid: 58d00f33dfbca8945987a1a15e8a30af, type: 2}
+      propertyPath: m_TagString
+      value: portal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58d00f33dfbca8945987a1a15e8a30af, type: 2}
   m_IsPrefabParent: 0
@@ -554,6 +558,11 @@ Prefab:
     - target: {fileID: 4982614420568076, guid: a3b78769be3fedc45b8d5ce6d2d44f39, type: 2}
       propertyPath: m_RootOrder
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 58133095630942722, guid: a3b78769be3fedc45b8d5ce6d2d44f39,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3b78769be3fedc45b8d5ce6d2d44f39, type: 2}
