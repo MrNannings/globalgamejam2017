@@ -174,7 +174,7 @@
   <object id="59" name="movingobstacle" x="864" y="384" width="64" height="352">
    <properties>
     <property name="unity:isTrigger" type="bool" value="true"/>
-    <property name="unity:tag" value="verticaobstacle"/>
+    <property name="unity:tag" value="verticalobstacle"/>
    </properties>
   </object>
   <object id="60" name="keycube" x="544" y="480" width="32" height="32">
@@ -192,25 +192,25 @@
   <object id="63" name="movingobstacle" x="1792" y="1184" width="64" height="352">
    <properties>
     <property name="unity:isTrigger" type="bool" value="true"/>
-    <property name="unity:tag" value="verticaobstacle"/>
+    <property name="unity:tag" value="verticalobstacle"/>
    </properties>
   </object>
   <object id="66" name="movingobstacle" x="2560" y="480" width="64" height="352">
    <properties>
     <property name="unity:isTrigger" type="bool" value="true"/>
-    <property name="unity:tag" value="verticaobstacle"/>
+    <property name="unity:tag" value="verticalobstacle"/>
    </properties>
   </object>
   <object id="67" name="movingobstacle" x="3104" y="416" width="64" height="352">
    <properties>
     <property name="unity:isTrigger" type="bool" value="true"/>
-    <property name="unity:tag" value="verticaobstacle"/>
+    <property name="unity:tag" value="verticalobstacle"/>
    </properties>
   </object>
   <object id="68" name="movingobstacle" x="3840" y="320" width="64" height="352">
    <properties>
     <property name="unity:isTrigger" type="bool" value="true"/>
-    <property name="unity:tag" value="verticaobstacle"/>
+    <property name="unity:tag" value="verticalobstacle"/>
    </properties>
   </object>
   <object id="69" name="keycube" x="2560" y="352" width="32" height="32">
@@ -228,7 +228,7 @@
   <object id="71" name="keycube" x="3904" y="192" width="32" height="32">
    <properties>
     <property name="unity:isTrigger" type="bool" value="true"/>
-    <property name="unity:tag" value="keycube"/>
+    <property name="unity:tag" value="verticalobstacle"/>
    </properties>
   </object>
   <object id="72" name="movingobstacle" x="4704" y="832" width="480" height="64">
