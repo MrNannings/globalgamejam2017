@@ -6,7 +6,7 @@ public class Portal : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		transform.position = GameObject.Find("endposition").transform.position;
+		transform.position = GameObject.Find("endposition").GetComponent<BoxCollider2D>().bounds.center + Vector3.back;
 	}
 	
 	// Update is called once per frame

@@ -17,9 +17,6 @@ public class ScoreManager : MonoBehaviour
     public Text timerText;
     public Text highScoreText;
 
-	public Transform levelStart;
-	public Transform levelEnd;
-
 	private float timerLevel;
 
     void Awake()
@@ -47,7 +44,7 @@ public class ScoreManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        timerLevel -= Time.deltaTime;
+        timerLevel += Time.deltaTime;
         if (timerLevel <= 0)
         {
             if(highScore < currentScore)
@@ -72,11 +69,8 @@ public class ScoreManager : MonoBehaviour
         scoreText = GameObject.Find("Score Text").GetComponent<Text>();
         timerText = GameObject.Find("Timer Text").GetComponent<Text>();
         highScoreText = GameObject.Find("HighScore Text").GetComponent<Text>();
-	    levelStart = GameObject.Find("Level Start").transform;
-	    levelEnd = GameObject.Find("Level End").transform;
 
         currentScore = 0;
-        timerLevel = (levelEnd.position.x - levelStart.position.x) * timePerUnit;
         highScoreText.text = "Score: " + highScore;
     }
 
@@ -89,7 +83,7 @@ public class ScoreManager : MonoBehaviour
     public void UpdateUI()
     {
         scoreText.text = "Score: " + currentScore;
-        timerText.text = "" + Mathf.Round(timerLevel);
+        timerText.text = timerLevel.ToString("F1");
     }
 
     public int CalculateScoreBetweenNode(SinusWaveNode node1, SinusWaveNode node2)

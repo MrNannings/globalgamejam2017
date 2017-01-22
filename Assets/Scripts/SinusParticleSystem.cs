@@ -8,8 +8,6 @@ public class SinusParticleSystem : MonoBehaviour {
 	public int particlesPerUnit;
 	public float speed;
 	public float avoidanceStrength = 1;
-	public Transform levelStart;
-	public Transform levelEnd;
 	public ParticleSystem scoreParticleSystem;
 	public Transform[] obstacles;
 	public AnimationCurve avoidanceCurve;
@@ -23,11 +21,13 @@ public class SinusParticleSystem : MonoBehaviour {
 
 	void Awake () {
 		particleSystem = GetComponent<ParticleSystem>();
+
+		transform.position += Vector3.back * 5;
 	}
 
 	// Use this for initialization
 	void Start () {
-		var levelLength = levelEnd.position - levelStart.position;
+		var levelLength = SinusWave.Instance.levelEnd.position - SinusWave.Instance.levelStart.position;
 
 		particleCount = particlesPerUnit * (int)levelLength.x;
 
@@ -37,7 +37,7 @@ public class SinusParticleSystem : MonoBehaviour {
 		particles = new ParticleSystem.Particle[particleCount];
 		scoreParticles = new ParticleSystem.Particle[particleCount];
 		for (int i = 0; i < particleCount; i++) {
-			var position = levelStart.position + levelLength * ((float)i / particleCount);
+			var position = SinusWave.Instance.levelStart.position + levelLength * ((float)i / particleCount);
 
 			particleRandom[i] = (Random.value - 0.5f) * 0.8f;
 			particleXPositions[i] = position.x;
@@ -64,9 +64,9 @@ public class SinusParticleSystem : MonoBehaviour {
 	void Update () {
         for(int i = 0; i < particleCount; i++) {
 			particleXPositions[i] += speed * Time.deltaTime;
-	        if (particleXPositions[i] > levelEnd.position.x) {
-		        var difference = particleXPositions[i] - levelEnd.position.x;
-		        particleXPositions[i] = levelStart.position.x + difference;
+	        if (particleXPositions[i] > SinusWave.Instance.levelEnd.position.x) {
+		        var difference = particleXPositions[i] - SinusWave.Instance.levelEnd.position.x;
+		        particleXPositions[i] = SinusWave.Instance.levelStart.position.x + difference;
 	        }
 
 	        var xPosition = particleXPositions[i];
