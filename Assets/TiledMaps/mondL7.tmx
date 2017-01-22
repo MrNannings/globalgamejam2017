@@ -228,7 +228,7 @@
   <object id="71" name="keycube" x="3904" y="192" width="32" height="32">
    <properties>
     <property name="unity:isTrigger" type="bool" value="true"/>
-    <property name="unity:tag" value="verticalobstacle"/>
+    <property name="unity:tag" value="keycube"/>
    </properties>
   </object>
   <object id="72" name="movingobstacle" x="4704" y="832" width="480" height="64">
