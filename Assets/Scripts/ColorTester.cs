@@ -19,7 +19,8 @@ namespace GlobalGameJam2017 {
         public Animator playerAnimator;
         public Animator shadowAnimator;
 		public Material PlatformShadowMaterial;
-        private bool shrinkAnimation = false;
+        public bool shrinkAnimation = false;
+        public bool growAnimation = true;
 
         private bool grounded;
 		private bool jumped;
@@ -62,6 +63,8 @@ namespace GlobalGameJam2017 {
 			if (startPosition != null) {
 				transform.position = startPosition.transform.position;
 			}
+
+			child.localScale = new Vector3(0.01f, 0.01f);
 		}
 
 		private void Update () {
@@ -70,6 +73,10 @@ namespace GlobalGameJam2017 {
                 GettingHitShrinkAnimation();
                 return;
             }
+			else if (growAnimation) {
+				GrowAnimation();
+				return;
+			}
 			if (CheckHittingPlatform()) {
 				if (!grounded) {
 					soundsController.PlaySound(3);
@@ -178,17 +185,27 @@ namespace GlobalGameJam2017 {
 	        }
 		}
 
+		private void GrowAnimation () {
+			if (child.localScale.x >= 1) {
+				child.localScale = new Vector3(1, 1, 1);
+				growAnimation = false;
+			}
+			else {
+				child.localScale += new Vector3(Time.deltaTime * 1.5f, Time.deltaTime * 1.5f, 1);
+			}
+		}
+
         private void GettingHitShrinkAnimation()
         { 
             if (child.localScale.x > 0)
             {
-                child.localScale -= new Vector3(.05f, .05f, 0);
+                child.localScale -= new Vector3(Time.deltaTime * 2, Time.deltaTime * 2, 1);
             }
             else
             {
                 transform.position = lastGroundedPosition;
                 rigidbody.velocity = Vector2.zero;
-                child.localScale = new Vector3(1,1,0);
+                child.localScale = new Vector3(1,1,1);
                 shrinkAnimation = false;
                 GetComponent<Rigidbody2D>().isKinematic = false;
             }
