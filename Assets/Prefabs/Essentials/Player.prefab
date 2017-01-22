@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 114931793138708124}
   - component: {fileID: 50734309092918506}
   - component: {fileID: 61317711015617632}
+  - component: {fileID: 58104917296972574}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -192,6 +193,20 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!58 &58104917296972574
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1825527824735708}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -0.58}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!61 &61317711015617632
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -203,9 +218,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.021094799}
+  m_Offset: {x: 0, y: 0.03}
   serializedVersion: 2
-  m_Size: {x: 0.8266115, y: 2.096915}
+  m_Size: {x: 0.7, y: 1.7}
 --- !u!81 &81862553421182662
 AudioListener:
   m_ObjectHideFlags: 1
@@ -297,7 +312,6 @@ MonoBehaviour:
   updateInterval: 0.5
   playerAnimator: {fileID: 95591445274397366}
   shadowAnimator: {fileID: 95237283226515650}
-  touchParticle: {fileID: 0}
 --- !u!124 &124833641451625288
 Behaviour:
   m_ObjectHideFlags: 1

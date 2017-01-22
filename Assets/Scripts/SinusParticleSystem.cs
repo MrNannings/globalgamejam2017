@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SinusParticleSystem : MonoBehaviour {
@@ -68,13 +69,15 @@ public class SinusParticleSystem : MonoBehaviour {
 		        particleXPositions[i] = levelStart.position.x + difference;
 	        }
 
-	        var position = particleXPositions[i];
-	        if (position + particleRandom[i] * 2 > 1 && position + particleRandom[i] * 2 < 3) {
-				scoreParticles[i].position = new Vector3(position, SinusWave.Instance.GetValue(position) + particleRandom[i]);
+	        var xPosition = particleXPositions[i];
+	        var position = new Vector3(xPosition, SinusWave.Instance.GetValue(xPosition) + particleRandom[i]);
+
+	        if (SinusWave.Instance.touchNodes.Any(a => Vector3.Distance(a.position, position) < 0.8f)) {
+				scoreParticles[i].position = position;
 		        particles[i].position = Vector3.one * 10000;
 	        }
 	        else {
-		        particles[i].position = new Vector3(position, SinusWave.Instance.GetValue(position) + particleRandom[i]);
+		        particles[i].position = position;
 		        scoreParticles[i].position = Vector3.one * 10000;
 	        }
 

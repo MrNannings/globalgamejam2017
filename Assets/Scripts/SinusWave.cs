@@ -16,6 +16,7 @@ public class SinusWave : MonoBehaviour {
 	public GameObject touchParticle;
 	public Transform levelStart;
 	public Transform levelEnd;
+	public List<SinusWaveNode> touchNodes = new List<SinusWaveNode>();
 
 	private Vector2 offset;
 	private AnalyzeSound bassLine;
@@ -23,7 +24,6 @@ public class SinusWave : MonoBehaviour {
 	private SoundsController soundsController;
 	private float frequencyAnimationTime = -1;
 	private float amplitubeAnimationTime = -1;
-	private List<SinusWaveNode> touchNodes = new List<SinusWaveNode>();
 
 	private NodePair lastTouchPair;
 	
@@ -46,6 +46,8 @@ public class SinusWave : MonoBehaviour {
 		levelStart.transform.position = new Vector3(middleline.bounds.min.x, middleline.bounds.center.y);
 		levelEnd.transform.position = new Vector3(middleline.bounds.max.x, middleline.bounds.center.y);
 		offset = levelStart.transform.position;
+
+		touchNodes.Clear();
 	}
 	
 	// Update is called once per frame
@@ -89,6 +91,8 @@ public class SinusWave : MonoBehaviour {
 
 		ShowTouchParticle(positionOnSinus);
 		soundsController.PlaySound(2);
+
+		touchNodes.Add(new SinusWaveNode(0,0,positionOnSinus));
 
 		if (lastTouchPair == null) {
 			lastTouchPair = new NodePair(new SinusWaveNode(0, 0, position));

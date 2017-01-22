@@ -513,6 +513,26 @@ Prefab:
       propertyPath: touchParticle
       value: 
       objectReference: {fileID: 1244002539}
+    - target: {fileID: 58104917296972574, guid: 3a5028964692df247933f8067124fe75,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 61317711015617632, guid: 3a5028964692df247933f8067124fe75,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 61317711015617632, guid: 3a5028964692df247933f8067124fe75,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 61317711015617632, guid: 3a5028964692df247933f8067124fe75,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a5028964692df247933f8067124fe75, type: 2}
   m_IsPrefabParent: 0
