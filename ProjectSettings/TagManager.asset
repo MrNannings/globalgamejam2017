@@ -13,6 +13,7 @@ TagManager:
   - keycube
   - horizontalobstacle
   - verticalobstacle
+  - portal
   layers:
   - Default
   - TransparentFX
