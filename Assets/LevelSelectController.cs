@@ -32,4 +32,9 @@ public class LevelSelectController : MonoBehaviour {
         }
         
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
