@@ -92,6 +92,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  direction: up
+  enemyHorizontalSprite: {fileID: 0}
 --- !u!212 &212916260980609964
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -45,7 +45,8 @@ public class EnemyController : MonoBehaviour {
             else
             {
                 direction = "down";
-                transform.localScale = new Vector3(orginalsize.x, -orginalsize.y, 1);
+				transform.rotation *= Quaternion.Euler(0, 0, 180f);
+//                transform.localScale = new Vector3(orginalsize.x, -orginalsize.y, 1);
             }
         }
         else if (direction == "down")
@@ -57,7 +58,8 @@ public class EnemyController : MonoBehaviour {
             else
             {
                 direction = "up";
-                transform.localScale = new Vector3(orginalsize.x, orginalsize.y, 1);
+				transform.rotation *= Quaternion.Euler(0, 0, 180f);
+//                transform.localScale = new Vector3(orginalsize.x, orginalsize.y, 1);
             }
         }
         if (direction == "right")
@@ -92,11 +94,10 @@ public class EnemyController : MonoBehaviour {
     }
 
     private void KickAnimation() {
-	    var sign = direction == "up" ? 1 : -1;
 
         if (kickAnimationTime >= 0)
         {
-            transform.localScale = orginalsize * sign + Vector3.one * curve.Evaluate(kickAnimationTime) * 0.13f;
+            transform.localScale = orginalsize + Vector3.one * curve.Evaluate(kickAnimationTime) * 0.13f;
 
             kickAnimationTime += Time.deltaTime;
 
@@ -110,7 +111,7 @@ public class EnemyController : MonoBehaviour {
         if (AnalyzeSoundKick != null && AnalyzeSoundKick.PitchValue > 50)
         {
             kickAnimationTime = 0;
-            transform.localScale = orginalsize * sign;
+            transform.localScale = orginalsize;
         }
     }
 }
