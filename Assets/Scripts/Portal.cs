@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour {
 
@@ -16,6 +17,8 @@ public class Portal : MonoBehaviour {
 
 	void OnTriggerEnter2D () {
 		GameObject.Find("Sounds Controller").GetComponent<SoundsController>().PlaySound(16);
+
+		PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name, ScoreManager.Instance.timerLevel);
 
 		App.LoadNextLevel();
 	}

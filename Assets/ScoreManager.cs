@@ -17,8 +17,8 @@ public class ScoreManager : MonoBehaviour
     public Text timerText;
     public Text highScoreText;
     public Text collectibleText;
+	public float timerLevel;
 
-	private float timerLevel;
 	private int collectibleCount;
 	private int collected;
 
@@ -47,17 +47,6 @@ public class ScoreManager : MonoBehaviour
 	void Update ()
     {
         timerLevel += Time.deltaTime;
-//        if (timerLevel <= 0)
-//        {
-//            if(highScore < currentScore)
-//            {
-//                highScore = currentScore;
-//                highScoreText.text = "Score: " + highScore;
-//            }
-//
-//			if (!debug) 
-//				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-//        }
 
 		if (Input.GetButton("Reset")) {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);

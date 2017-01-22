@@ -37,10 +37,7 @@ public class SinusWave : MonoBehaviour {
 		bassLine = GameObject.Find("MusicOut Bass").GetComponent<AnalyzeSound>();
 		kickLine = GameObject.Find("MusicOut Kick").GetComponent<AnalyzeSound>();
 		soundsController = GameObject.Find("Sounds Controller").GetComponent<SoundsController>();
-	}
 
-	// Use this for initialization
-	void Start () {
 		var middleline = GameObject.Find("middleLine").GetComponent<BoxCollider2D>();
 
 		levelStart.transform.position = new Vector3(middleline.bounds.min.x, middleline.bounds.center.y);
@@ -48,6 +45,11 @@ public class SinusWave : MonoBehaviour {
 		offset = levelStart.transform.position;
 
 		touchNodes.Clear();
+	}
+
+	// Use this for initialization
+	void Start () {
+		
 	}
 	
 	// Update is called once per frame
