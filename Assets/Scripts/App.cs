@@ -53,10 +53,15 @@ public class App : MonoBehaviour {
 	}
 
 	public void ContinueLastLevel () {
-		
+        SceneManager.LoadScene("level001");
 	}
 
-	public void Quit () {
+    public void LevelSelectScreen()
+    {
+        SceneManager.LoadScene("LevelSelect");
+    }
+
+    public void Quit () {
 		Application.Quit();
 	}
 }
