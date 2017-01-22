@@ -28,11 +28,13 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		var animationSpeedIncrease = 1 + curve.Evaluate(kickAnimationTime) * 0.6f;
+
         if (direction == "up")
         {
             if (boxColliderPath.bounds.max.y > transform.position.y)
             {
-                transform.position += new Vector3(0, 3, 0) * Time.deltaTime;
+                transform.position += new Vector3(0, 3, 0) * Time.deltaTime * animationSpeedIncrease;
             }
             else
             {
@@ -44,7 +46,7 @@ public class EnemyController : MonoBehaviour {
         {
             if (boxColliderPath.bounds.min.y < transform.position.y)
             {
-                transform.position -= new Vector3(0, 3, 0) * Time.deltaTime;
+                transform.position -= new Vector3(0, 3, 0) * Time.deltaTime * animationSpeedIncrease;
             }
             else
             {
@@ -62,7 +64,7 @@ public class EnemyController : MonoBehaviour {
 
         if (kickAnimationTime >= 0)
         {
-            transform.localScale = orginalsize * sign + Vector3.one * curve.Evaluate(kickAnimationTime) * 0.2f;
+            transform.localScale = orginalsize * sign + Vector3.one * curve.Evaluate(kickAnimationTime) * 0.13f;
 
             kickAnimationTime += Time.deltaTime;
 
